@@ -16,3 +16,12 @@
     line-height: 120;
     vertical-align : center
 }
+
+#flightMainHeaderDiv {
+    width: 760px;
+    background-color: '#D4E5F5';
+    height: 50px;
+    line-height: 50px;
+    margin-left: 20px;
+    color : 'red';
+}

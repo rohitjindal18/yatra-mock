@@ -12,7 +12,7 @@ export default class HomePage extends React.Component {
   	searchFlights() {
   		var sourceC = this.refs.sourceCity.value;
   		var destinationC = this.refs.destinationCity.value;
-  		this.props.searchFlight(sourceC , destinationC);
+  		this.props.flightSearchData(sourceC , destinationC);
   		browserHistory.push('/flight');
   	}
 

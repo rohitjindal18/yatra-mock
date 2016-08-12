@@ -1,8 +1,23 @@
-function appState(state = [] , action){
+
+const initialState = {
+      sourceCity: "",
+	  destinationCity: "",
+	  flights : []
+};
+
+function appState(state = initialState , action){
 	switch(action.type){
 		case 'SEARCH_FLIGHT':
-			console.log('searchFlight Called');
-			return state;
+			return{
+				...state,
+				flights : action.response
+			};
+		case 'FLIGHT_SEARCH_DATA':
+			return{
+				...state,
+				sourceCity : action.sourceCity,
+				destinationCity : action.destinationCity
+			};
 		default :
 			return state;
 	}
