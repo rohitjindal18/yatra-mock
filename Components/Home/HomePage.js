@@ -8,7 +8,7 @@ export default class HomePage extends React.Component {
 		};
 	}
 	componentDidMount () {
-    	//this.props.searchFlight();
+    	this.props.searchFlight();
   	}	
 
 	clickMe() {

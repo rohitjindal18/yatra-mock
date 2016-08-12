@@ -1,6 +1,16 @@
+import API from '../API/API.js';
 export function searchFlight(){
-	return{
-		type : 'SEARCH_FLIGHT'
+	return (dispatch) => {
+		API.fetchFlightDetails({
+        "sourceCity": "Bangalore",
+        "destinationCity": "Delhi"
+      }).
+		then((response) => {
+				return dispatch({
+					type : 'SEARCH_FLIGHT',
+					response
+				})
+		});
 	}
 }
 
