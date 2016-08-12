@@ -6,8 +6,7 @@ var API = {
   },
 
   fetchFlightDetails(data) {
-    console.log(JSON.stringify(data))
-
+    console.log("qqq"+JSON.stringify(data))
     var request = new Request('http://localhost:7777/fetchFlight', {
       method: 'POST', 
       mode: 'cors', 

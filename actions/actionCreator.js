@@ -1,9 +1,10 @@
 import API from '../API/API.js';
-export function searchFlight(){
+export function searchFlight(sourceCity , destinationCity){
+	console.log("qw"+sourceCity);
 	return (dispatch) => {
 		API.fetchFlightDetails({
-        "sourceCity": "Bangalore",
-        "destinationCity": "Delhi"
+        "sourceCity": sourceCity,
+        "destinationCity": destinationCity
       }).
 		then((response) => {
 				return dispatch({

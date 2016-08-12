@@ -11,3 +11,8 @@
     position: relative;
     left: 20;
 }
+
+.divText {
+    line-height: 120;
+    vertical-align : center
+}

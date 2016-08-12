@@ -1,4 +1,5 @@
 import React from 'react';
+import { browserHistory } from 'react-router';
 
 export default class HomePage extends React.Component {
 	constructor(){
@@ -7,42 +8,62 @@ export default class HomePage extends React.Component {
 			val : ""
 		};
 	}
-	componentDidMount () {
-    	this.props.searchFlight();
-  	}	
 
-	clickMe() {
-		var component = this;
-		fetch("http://localhost:7777/users",{
-		}).then(function(response) {
-				console.log(response.status);
-				component.setState({
-					val : response.status
-					});
-		});
-	}
+  	searchFlights() {
+  		var sourceC = this.refs.sourceCity.value;
+  		var destinationC = this.refs.destinationCity.value;
+  		this.props.searchFlight(sourceC , destinationC);
+  		browserHistory.push('/flight');
+  	}
+
 	render() {
 		return(
 				<div style={styles.homePageBannerStyle}>
 					<div style={styles.homePageBannerStyle}><img src="./Images/goldengate.jpg" style= {styles.homePageBannerImage}></img></div>
+					<div style={styles.homeheading}>
+						<div style={styles.flightsHeading}> 
+							<strong>FLIGHTS</strong>
+						</div>
+						<div style={styles.busesHeading}>
+							<strong>BUSES</strong>
+						</div>
+					</div>
 					<div style ={styles.bannerMiddleDiv}>
 						<div style = {styles.bannerMiddleSubDiv}>
 							<table style={styles.homeBannerTable}>
 								<tbody>
 									<tr>
 										<td style={styles.homeBannerTdBig}>
-											<input style={styles.input.homeBannerTdBig} type="text" placeholder="Select Origin"></input>
+											<input style={styles.input.homeBannerTdBig} type="text" placeholder="Select Origin" ref="sourceCity"></input>
 										</td>
 										<td style={styles.homeBannerTdBig}>
-											<input style={styles.input.homeBannerTdBig} type="text" placeholder="Select Destination"></input>
+											<input style={styles.input.homeBannerTdBig} type="text" placeholder="Select Destination" ref="destinationCity"></input>
 										</td>
 										<td style={styles.homeBannerTdBig}></td>
 										<td style={styles.homeBannerTdBig}></td>
 										<td style={styles.homeBannerTdBig}></td>
-										<td id="searchTd" style={styles.homeBannerTdSmall}></td>
+										<td id="searchTd" style={styles.homeBannerTdSmall} onClick={this.searchFlights.bind(this)}></td>
 									</tr>
 								</tbody>
 							</table>
+						</div>
+					</div>
+					<div style = {styles.bottomBanners}>
+						<div style ={styles.bannerFirst}>
+							LOWEST FARE FINDER
+							
+						</div>
+						<div style ={styles.bannerRest}>
+						LOWEST FARE FINDER
+							
+						</div>
+						<div style ={styles.bannerRest}>
+						LOWEST FARE FINDER
+							
+						</div>
+						<div style ={styles.bannerRest}>
+						LOWEST FARE FINDER
+							
 						</div>
 					</div>
 				</div>
@@ -61,7 +82,7 @@ var styles = {
 	homePageBannerImage : {
 		width : '100%',
 		height : 550,
-		opacity : 0.3
+		opacity : 0.5
 	},
 	bannerMiddleDiv : {
 		position : 'absolute',
@@ -107,5 +128,52 @@ var styles = {
 			fontSize : 16,
 			opacity : 1
 		}
+	},
+	homeheading : {
+		position : 'absolute',
+		marginLeft : 200 ,
+		marginTop : 180 ,
+		width : 1000 , 
+		height : 120 ,
+		display : 'inline-flex'
+	},
+	flightsHeading : {
+		width : 100,
+		height : 80,
+		color : 'black',
+		opacity : 0.9,
+		color : 'black'
+	},
+	busesHeading : {
+		width : 100,
+		height : 80,
+		color : 'black',
+		opacity : 0.9,
+		color : 'black'
+	},
+	bottomBanners : {
+		position : 'absolute',
+		marginTop : 420,
+		width : '100%',
+		height : 150 ,
+		display : 'inline-flex'
+	},
+	bannerFirst : {
+		marginLeft : 150,
+		width : 250 ,
+		height : 120 ,
+		backgroundColor : 'black',
+		color : 'white',
+		lineHeight: 7,
+		textAlign : 'center'
+	},
+	bannerRest : {
+		marginLeft : 50,
+		width : 250 ,
+		height : 120 ,
+		backgroundColor : 'black',
+		color : 'white',
+		lineHeight: 7,
+		textAlign : 'center'
 	}
 };
