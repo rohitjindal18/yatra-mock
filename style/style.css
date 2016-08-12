@@ -1,0 +1,13 @@
+#searchTd:after {
+	content: "\f002";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: white;
+    font-size: 27px;
+    padding-right: 0.5em;
+    position: relative;
+    left: 20;
+}
