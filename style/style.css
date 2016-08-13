@@ -17,11 +17,257 @@
     vertical-align : center
 }
 
+.planeCircle:after {
+    content: "\f072";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: black;
+    font-size: 27px;
+    padding-right: 0.5em;
+    position: relative;
+    left : 150;
+    top : 70;
+}
+
 #flightMainHeaderDiv {
-    width: 760px;
+    width: 800px;
     background-color: '#D4E5F5';
     height: 50px;
     line-height: 50px;
-    margin-left: 20px;
     color : 'red';
+    text-align: center;
+}
+
+#divFlights {
+    width: 800px;
+    background-color: #F2F2F2;
+    height: 50px;
+    color : gray;
+    margin-top: -20px;
+    line-height: 50px;
+}
+#divFlights ul {
+    white-space : nowrap;
+    overflow-x:hidden;
+    justify-content: flex-start;
+    display: flex;
+}
+#divFlights li {
+    display: inline;
+    text-transform: uppercase;
+    width: 120px;
+}
+
+#flightListTopDiv {
+    background-color: white;
+    height: 60px;
+    line-height: 60px;
+}
+#flightListTopDiv ul {
+    white-space : nowrap;
+    overflow-x:hidden;
+    justify-content: flex-start;
+    display: flex;
+}
+
+#flightListTopDiv li {
+    display: inline;
+    text-transform: uppercase;
+    width: 120px;
+}
+
+#flightListMainDiv {
+    margin-top: -20px;
+}
+
+#flightListBottomDiv {
+    background-color: #F2F2F2;
+    height: 35px;
+    line-height: 35px;
+}
+
+#flightListBottomDiv ul {
+    white-space : nowrap;
+    overflow-x:hidden;
+    justify-content: flex-start;
+    display: flex;
+    margin-left: -30px;
+}
+
+#flightListBottomDiv li {
+    display: inline;
+    text-transform: uppercase;
+    width: 120px;
+    color : gray;
+}
+
+#bookflight {
+    background-color: #4EA5DF;
+    color : white;
+    border-radius: 4px;
+    height: 40px;
+    line-height: 40px;
+    width: 120px;
+    text-align: center;
+    margin-top: 19px;
+}
+
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+#topDivConnect {
+    display: inline-flex;
+    margin-left: 250px;
+    width: 900;
+}
+
+.reviewBooking {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 40px;
+    z-index : 10;
+    border : 1px solid green;
+}
+.reviewTraveller {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 40px;
+     z-index : 10;
+     border : 1px solid green;
+}
+#horizontalBar {
+    width: 800px;
+    margin-left: -8px;
+    margin-top: 20px;
+    background-color: green;
+}
+
+#subBookingDiv {
+    display: flex;
+    margin-left: 250px;
+    width: 870px;
+    height: auto;
+}
+
+.ReviewBookingClass {
+    border : 1px solid #E2E2E2;
+    margin-top: 20px;
+    width: 600px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.TravelBookingClass {
+    border : 1px solid #E2E2E2;
+    margin-top: 20px;
+    width: 600px;
+    height: 200px;
+    border-radius: 5px;
+}
+.Circle {
+    display: flex;
+}
+
+.sourceCircle {
+    background-color: #E2E2E2;
+    border : 2px solid black;
+    color : gray;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border-radius: 50px;
+    margin-left: 60px;
+    margin-top : 30px;
+}
+.destinationCircle {
+    background-color: #E2E2E2;
+    border : 2px solid black;
+    color : gray;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border-radius: 50px;
+    margin-left: 280px;
+    margin-top : 30px;
+}
+.reviewHeader {
+    width: 580px;
+    height: 35px;
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    line-height: 35px;
+    padding-left: 20px;
+    font-family: Optima;
+}
+
+.travelHeader {
+    width: 580px;
+    height: 35px;
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    line-height: 35px;
+    padding-left: 20px;
+    font-family: Optima;
+}
+.continueButton {
+    margin-left: 400px;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #4EA5DF;
+    color:  white;
+    border-radius: 4px;
+}
+
+#reviewBook {
+    width: 600px;
+    height: 300px;
+}
+
+.baseFees {
+    display: flex;
+    margin-top: 10px;
+}
+
+.priceHeader {
+    width: 250px;
+    height: 35px;
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    line-height: 35px;
+    padding-left: 20px;
+    font-family: Optima;
+}
+
+.reviewPrice {
+    width: 250px;
+    height: 300px;
+    margin-top: 20px;
+    margin-left: 10px;
 }

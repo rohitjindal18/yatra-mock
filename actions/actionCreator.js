@@ -22,6 +22,13 @@ export function flightSearchData(sourceCity , destinationCity){
 	}
 }
 
+export function selectFlightIndex(index) {
+	return {
+		type : 'FLIGHT_INDEX_SET',
+		index
+	}
+}
+
 export function searchFlightSuccess(data){
 	return {
 		type : 'FLIGHT_SUCCESS',

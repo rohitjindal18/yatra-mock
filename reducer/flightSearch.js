@@ -2,7 +2,8 @@
 const initialState = {
       sourceCity: "",
 	  destinationCity: "",
-	  flights : []
+	  flights : [],
+	  flightIndex : -1
 };
 
 function appState(state = initialState , action){
@@ -17,6 +18,11 @@ function appState(state = initialState , action){
 				...state,
 				sourceCity : action.sourceCity,
 				destinationCity : action.destinationCity
+			};
+		case 'FLIGHT_INDEX_SET':
+			return {
+				...state ,
+				flightIndex : action.index
 			};
 		default :
 			return state;

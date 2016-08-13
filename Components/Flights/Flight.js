@@ -1,13 +1,18 @@
 import React from 'react';
+import FlightLists from './FlightLists.js';
+import { browserHistory } from 'react-router';
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 class Flight extends React.Component {
-	constructor(){
-		super();
+	constructor(props){
+		super(props);
 		this.state = {
+			isFirst : true,
 			flightCount : 0,
 			sourceCity : "",
 			destinationCity : "",
-			flights : []
+			flights : [],
+			flightIndex : -1
 		}
 	}
 	componentWillMount(){
@@ -21,16 +26,37 @@ class Flight extends React.Component {
 		this.props.searchFlight(this.state.sourceCity , this.state.destinationCity);
 	}
 
+	shouldComponentUpdate() {
+		if(this.state.isFirst){
+			this.setState({
+				isFirst : false
+			});	
+			return true;
+		}
+		else {
+			return (this.state.flightCount !== this.props.state.appState.flights.length);
+		}
+	}
+
 	componentDidUpdate() {
 		this.setState({
 			flightCount : this.props.state.appState.flights.length,
 			flights : this.props.state.appState.flights
 		});
 	}
+
+	bookFlight(index){
+		console.log("rohit"+this);
+
+		this.props.selectFlightIndex(index);
+		browserHistory.push('/booking');
+	}
+
 	render(){
-		var flightLists = this.props.state.appState.flights.map(function(elem) {
+		var component = this;
+		var flightLists = this.props.state.appState.flights.map(function(elem , index) {
 			return (
-					<h1>rohit</h1>
+					<FlightLists key={index} val={index} flightName={elem.flightName} flightPrice={elem.price} flightDeparture={elem.departTime} flightArrival={elem.arrivalTime} flightDuration={elem.duration} handleBookingFlight={component.bookFlight.bind(component)}/>
 				);
 		});
 		return(
@@ -38,7 +64,28 @@ class Flight extends React.Component {
 				<div id="flightMainHeaderDiv" style={styles.flightMainHeaderDiv}>
 					<span>You have successfully found {this.state.flightCount} flights</span>
 				</div>
-				{flightLists}
+				<div id="divFlights">
+					<ul>
+						<li>
+							Airline
+						</li>
+						<li>
+							Depart
+						</li>
+						<li>
+							Arrive
+						</li>
+						<li>
+							Duration
+						</li>
+						<li>
+							Price / Adult
+						</li>
+					</ul>
+				</div>
+				<ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+					{flightLists}
+				</ReactCSSTransitionGroup>
 			</div>
 		);
 	}
@@ -48,8 +95,7 @@ var styles = {
 	flightMainDiv : {
 		marginLeft : 300,
 		width: 800,
-		height : 500,
-		backgroundColor : '#F2F2F2'
+		height : 'auto'
 	},
 	flightMainHeaderDiv : {
 		backgroundColor : '#D4E5F5'
