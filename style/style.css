@@ -133,6 +133,25 @@
   opacity: 0.01;
   transition: opacity 300ms ease-in;
 }
+.another-enter {
+  opacity: 0.01;
+}
+
+.another-enter.another-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.another-leave {
+  opacity: 1;
+}
+
+.another-leave.another-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+
 
 #topDivConnect {
     display: inline-flex;
@@ -184,7 +203,7 @@
     border : 1px solid #E2E2E2;
     margin-top: 20px;
     width: 600px;
-    height: 200px;
+    height: auto;
     border-radius: 5px;
 }
 .Circle {
@@ -266,8 +285,86 @@
 }
 
 .reviewPrice {
-    width: 250px;
-    height: 300px;
+    width: 300px;
+    height: 200px;
     margin-top: 20px;
     margin-left: 10px;
+    border : 1px solid #E2E2E2;
+    border-radius: 5px;
+}
+
+.adultSpan {
+    width: 80px;
+    height: 30px;
+    font-family: Optima;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.adultSpan2 {
+    width: 150px;
+    height: 30px;
+    font-family: Optima;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.inputClass {
+    margin-left: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+}
+
+.travelInput {
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+
+
+.travelCount {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    color : gray;
+    font-size: 20px;
+}
+
+#depDate {
+    font-family: Optima;
+    font-size: 20px;
+    display: table-cell;
+}
+
+#arrDate {
+    font-family: Optima;
+    font-size: 20px;
+    display: table-cell;
+}
+#datePicker {
+    position: absolute;
+    z-index: 100;
+    margin-left: 550px;
+    margin-top: 300px;
+    width: 270px;
+    background-color: white;
+    color :black;
+    text-align: center;
+    border : 1px solid gray;
+}
+
+#datePicker2 {
+    position: absolute;
+    z-index: 100;
+    margin-left: 700px;
+    margin-top: 300px;
+    width: 270px;
+    background-color: white;
+    color :black;
+    text-align: center;
+    border : 1px solid gray;
 }

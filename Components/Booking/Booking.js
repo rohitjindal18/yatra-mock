@@ -1,4 +1,5 @@
 import React from 'react';
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 class ReviewBooking extends React.Component {
 	render() {
 		return(
@@ -26,13 +27,15 @@ class ReviewPrice extends React.Component {
 		super(props);
 		this.state = {
 			flightPrice : 0,
-			totalPrice : 0
+			totalPrice : 0,
+			travellerCount : 0
 		}
 	}
 	componentDidMount(){
 		this.setState({
 			flightPrice : this.props.state.appState.flights[this.props.state.appState.flightIndex].price,
-			totalPrice : this.props.state.appState.flights[this.props.state.appState.flightIndex].price * 1
+			totalPrice : this.props.state.appState.flights[this.props.state.appState.flightIndex].price * this.props.state.appState.travellerCount,
+			travellerCount : this.props.state.appState.travellerCount
 		});
 	}
 	render() {
@@ -44,22 +47,56 @@ class ReviewPrice extends React.Component {
 				<div>
 					<div >
 						<div style={{float:'left'}}>
-							Adult x 1
+							Adult x {this.state.travellerCount}
 						</div>
-						<div style={{float:'right'}}>
+						<div style={{float:'right',paddingRight : '10px'}}>
 							{this.state.flightPrice}
 						</div>
 					</div>
 					<br/>
 					<br/>
-					<div style={{float:'right'}}>
+					<div style={{float:'right',paddingRight : '10px','fontFamily':'Optima'}}>
 						You Pay 
 					</div>
 					<br/>
-					<div style={{float:'right',fontSize : '24px'}}>
+					<div style={{float:'right',fontSize : '24px','fontFamily':'Optima'}}>
 						INR {this.state.totalPrice}
 					</div>
 				</div>
+			</div>
+		);
+	}
+}
+
+class TravelDetail extends React.Component {
+	constructor(props){
+		super(props);
+	}
+	render(){
+		var travelHolder = [];
+		for(var i =0 ;i<this.props.state.appState.travellerCount;i++){
+			travelHolder.push(
+				<div key={i}>
+					<div className="travelInput">
+						<div className="adultSpan">Adult {i+1}</div>
+						<div className="adultSpan2">
+							<input type="text" placeholder="First Name" className="inputClass"></input>
+						</div>&nbsp;&nbsp;&nbsp;&nbsp;
+						<div className="adultSpan2">
+							<input type="text" placeholder="Middle Name" className="inputClass"></input>
+						</div>&nbsp;&nbsp;&nbsp;&nbsp;
+						<div className="adultSpan2">
+							<input type="text" placeholder="Last Name" className="inputClass"></input>
+						</div>
+					</div>
+				</div>
+			);
+		}
+		return(
+			<div>
+				<ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500} >
+				{travelHolder}
+				</ReactCSSTransitionGroup>
 			</div>
 		);
 	}
@@ -75,6 +112,9 @@ class ReviewTravel extends React.Component {
 				<div className="travelHeader">
 					Traveller Details
 				</div>
+				<div className="adultDetails">
+					<TravelDetail {...this.props}/>
+				</div>
 			</div>
 		);
 	}
@@ -84,7 +124,7 @@ export default class Booking extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			currentbutton : 1,
+			currentbutton : 0,
 			bgcolor : 'green' , 
 			color : 'white'
 		}
@@ -169,6 +209,9 @@ export default class Booking extends React.Component {
 						<div className="reviewPrice">
 							<ReviewPrice {...this.props}/>
 						</div>
+					</div>
+					<div className="continueButton" onClick={this.changeLayout.bind(this)}>
+						Confirm Booking
 					</div>
 				</div>
 			);

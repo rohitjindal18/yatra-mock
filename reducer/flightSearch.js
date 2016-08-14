@@ -3,7 +3,8 @@ const initialState = {
       sourceCity: "",
 	  destinationCity: "",
 	  flights : [],
-	  flightIndex : -1
+	  flightIndex : -1,
+	  travellerCount : 0
 };
 
 function appState(state = initialState , action){
@@ -17,7 +18,8 @@ function appState(state = initialState , action){
 			return{
 				...state,
 				sourceCity : action.sourceCity,
-				destinationCity : action.destinationCity
+				destinationCity : action.destinationCity,
+				travellerCount : action.peopleCount
 			};
 		case 'FLIGHT_INDEX_SET':
 			return {

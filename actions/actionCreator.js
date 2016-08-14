@@ -14,11 +14,12 @@ export function searchFlight(sourceCity , destinationCity){
 	}
 }
 
-export function flightSearchData(sourceCity , destinationCity){
+export function flightSearchData(sourceCity , destinationCity , peopleCount){
 	return {
 		type : 'FLIGHT_SEARCH_DATA',
 		sourceCity ,
-		destinationCity
+		destinationCity,
+		peopleCount
 	}
 }
 
