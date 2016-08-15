@@ -8,7 +8,10 @@ var config = {
 	
    devServer: {
       inline: true,
-      port: 8080
+      port: 7070,
+      historyApiFallback: true,
+      contentBase: './',
+      hot: true
    },
 	
    module: {

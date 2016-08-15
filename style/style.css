@@ -11,3 +11,556 @@
     position: relative;
     left: 20;
 }
+
+.divText {
+    line-height: 120;
+    vertical-align : center
+}
+
+.planeCircle:after {
+    content: "\f072";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: black;
+    font-size: 27px;
+    padding-right: 0.5em;
+    position: relative;
+    left : 280;
+    top : 70;
+    animation-name: myanim;
+    animation-duration: 7s;
+}
+@keyframes myanim {
+    from {
+        left : 0;
+    }
+    to {
+        left : 280;
+    }
+}
+
+#flightMainHeaderDiv {
+    width: 800px;
+    background-color: '#D4E5F5';
+    height: 50px;
+    line-height: 50px;
+    color : 'red';
+    text-align: center;
+}
+
+#divFlights {
+    width: 800px;
+    background-color: #F2F2F2;
+    height: 50px;
+    color : gray;
+    margin-top: -20px;
+    line-height: 50px;
+}
+#divFlights ul {
+    white-space : nowrap;
+    overflow-x:hidden;
+    justify-content: flex-start;
+    display: flex;
+}
+#divFlights li {
+    display: inline;
+    text-transform: uppercase;
+    width: 120px;
+}
+
+#flightListTopDiv {
+    background-color: white;
+    height: 60px;
+    line-height: 60px;
+}
+#flightListTopDiv ul {
+    white-space : nowrap;
+    overflow-x:hidden;
+    justify-content: flex-start;
+    display: flex;
+}
+
+#flightListTopDiv li {
+    display: inline;
+    text-transform: uppercase;
+    width: 120px;
+}
+
+#flightListMainDiv {
+    margin-top: -20px;
+}
+
+#flightListBottomDiv {
+    background-color: #F2F2F2;
+    height: 35px;
+    line-height: 35px;
+}
+
+#flightListBottomDiv ul {
+    white-space : nowrap;
+    overflow-x:hidden;
+    justify-content: flex-start;
+    display: flex;
+    margin-left: -30px;
+}
+
+#flightListBottomDiv li {
+    display: inline;
+    text-transform: uppercase;
+    width: 120px;
+    color : gray;
+}
+
+#bookflight {
+    background-color: #4EA5DF;
+    color : white;
+    border-radius: 4px;
+    height: 40px;
+    line-height: 40px;
+    width: 120px;
+    text-align: center;
+    margin-top: 19px;
+}
+
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+.another-enter {
+  opacity: 0.01;
+}
+
+.another-enter.another-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.another-leave {
+  opacity: 1;
+}
+
+.another-leave.another-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
+}
+
+
+
+#topDivConnect {
+    display: inline-flex;
+    margin-left: 250px;
+    width: 900;
+}
+
+.reviewBooking {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 40px;
+    z-index : 10;
+    border : 1px solid green;
+}
+.reviewTraveller {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    text-align: center;
+    line-height: 40px;
+     z-index : 10;
+     border : 1px solid green;
+}
+#horizontalBar {
+    width: 800px;
+    margin-left: -8px;
+    margin-top: 20px;
+    background-color: green;
+}
+
+#subBookingDiv {
+    display: flex;
+    margin-left: 250px;
+    width: 870px;
+    height: auto;
+}
+
+.ReviewBookingClass {
+    border : 1px solid #E2E2E2;
+    margin-top: 20px;
+    width: 600px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.TravelBookingClass {
+    border : 1px solid #E2E2E2;
+    margin-top: 20px;
+    width: 600px;
+    height: auto;
+    border-radius: 5px;
+}
+.Circle {
+    display: flex;
+}
+
+.sourceCircle {
+    background-color: white;
+    border : 2px solid black;
+    color : green;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border-radius: 50px;
+    margin-left: 60px;
+    margin-top : 30px;
+    animation-name: sourceAnim;
+    animation-duration: 7s;
+}
+@keyframes sourceAnim {
+    from {
+        background-color: green;
+        color : white;
+    }
+    to {
+        background-color: white;
+        color : green;
+    }
+}
+
+@keyframes destAnim {
+    from {
+        background-color: white;
+        color : green;
+    }
+    to {
+        background-color: green;
+        color : white;
+    }
+}
+
+.imagepeoplediv {
+    background-color: red;
+    margin-top: 200px;
+    width: 300px
+    height: 200px;
+    position: relative;
+}
+
+.imageDiv1 {
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+.destinationCircle {
+    background-color: green;
+    border : 2px solid black;
+    color : white;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    border-radius: 50px;
+    margin-left: 280px;
+    margin-top : 30px;
+    animation-name: destAnim;
+    animation-duration: 7s;
+}
+.reviewHeader {
+    width: 580px;
+    height: 35px;
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    line-height: 35px;
+    padding-left: 20px;
+    font-family: Optima;
+}
+
+.travelHeader {
+    width: 580px;
+    height: 35px;
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    line-height: 35px;
+    padding-left: 20px;
+    font-family: Optima;
+}
+.continueButton {
+    margin-left: 400px;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #4EA5DF;
+    color:  white;
+    border-radius: 4px;
+}
+
+#reviewBook {
+    width: 600px;
+    height: 300px;
+}
+
+.baseFees {
+    display: flex;
+    margin-top: 10px;
+}
+
+.priceHeader {
+    width: 250px;
+    height: 35px;
+    background-color: #E2E2E2;
+    border-radius: 5px;
+    line-height: 35px;
+    padding-left: 20px;
+    font-family: Optima;
+}
+
+.reviewPrice {
+    width: 300px;
+    height: 200px;
+    margin-top: 20px;
+    margin-left: 10px;
+    border : 1px solid #E2E2E2;
+    border-radius: 5px;
+}
+
+.adultSpan {
+    width: 80px;
+    height: 30px;
+    font-family: Optima;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.adultSpan2 {
+    width: 150px;
+    height: 30px;
+    font-family: Optima;
+    line-height: 30px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.inputClass {
+    margin-left: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+
+}
+
+.travelInput {
+    display: flex;
+    width: 100%;
+    height: 50px;
+}
+
+
+.travelCount {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    color : gray;
+    font-size: 20px;
+}
+
+#depDate {
+    font-family: Optima;
+    font-size: 18px;
+    display: table-cell;
+    color: gray;
+}
+
+#arrDate {
+    font-family: Optima;
+    font-size: 20px;
+    display: table-cell;
+    color: gray;
+}
+
+#longimage {
+    margin-top: 450px;
+    height: 300px;
+}
+
+#imageDown {
+    height: 300px;
+    width: 100%;
+}
+
+.bannerAll {
+    box-shadow: 1px 1px 10px #888888;
+    animation-name: example;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+}
+
+@keyframes example {
+    from {
+        background-color: black;
+        color: orange;
+    }
+    to {
+        background-color: orange;
+        color : black;
+    }
+}
+#datePicker {
+    position: absolute;
+    z-index: 100;
+    margin-left: 550px;
+    margin-top: 200px;
+    width: 270px;
+    background-color: white;
+    color :black;
+    text-align: center;
+    border : 1px solid gray;
+}
+
+#imageLeft {
+    position: absolute;
+    width: 200px;
+}
+#imageRight {
+    position: absolute;
+    margin-left: 1120px;
+}
+
+#imgLeft {
+    width: 300px;
+    height: 314px;
+}
+
+#imgRight {
+    width: 300px;
+    height: 314px;
+}
+
+.indCity {
+    width: 350px;
+    height: 50px;
+    border : 0.5px solid silver;
+    line-height: 50px;
+    text-align: left;
+    font-family: Optima;
+    font-size: 18px;
+}
+
+.indCity:after {
+    content: "\f072";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: black;
+    font-size: 27px;
+    position: relative;
+    float: right;
+    padding-right: 10px;
+    }
+.depCity {
+    width: 350px;
+    height: 50px;
+    border : 0.5px solid silver;
+    line-height: 50px;
+    text-align: left;
+    font-family: Optima;
+    font-size: 18px;
+}
+
+.depCity:after {
+    content: "\f072";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: black;
+    font-size: 27px;
+    position: relative;
+    float: right;
+    padding-right: 10px;
+}
+
+
+.departCityDiv {
+    margin-left: 225px;
+    margin-top: 195px;
+    position: absolute;
+    width: 350px;
+    background-color: white;
+}
+
+.arrivalCityDiv {
+    margin-left: 400px;
+    margin-top: 195px;
+    position: absolute;
+    width: 350px;
+    background-color: white;
+}
+
+#datePicker2 {
+    position: absolute;
+    z-index: 100;
+    margin-left: 700px;
+    margin-top: 200px;
+    width: 270px;
+    background-color: white;
+    color :black;
+    text-align: center;
+    border : 1px solid gray;
+}
+
+.searchDep {
+    position: absolute;
+    width: 150px;
+    height: 20px;
+    background-color: red;
+}
+
+.calendarCity:after {
+    content: "\f073";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: gray;
+    font-size: 22px;
+    margin-top: -25px;
+    float: right;
+    padding-right: 5px;
+}
+
+#inrdiv:before {
+    content: "\f156";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: black;
+    font-size: 22px;
+    padding-left: -10px;
+}
