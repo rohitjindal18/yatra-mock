@@ -60,32 +60,40 @@ class Flight extends React.Component {
 				);
 		});
 		return(
-			<div style={styles.flightMainDiv}>
-				<div id="flightMainHeaderDiv" style={styles.flightMainHeaderDiv}>
-					<span>You have successfully found {this.state.flightCount} flights</span>
+			<div>
+				<div id="imageLeft">
+					<img id="imgLeft" src="../../Images/image1.jpg"/>
 				</div>
-				<div id="divFlights">
-					<ul>
-						<li>
-							Airline
-						</li>
-						<li>
-							Depart
-						</li>
-						<li>
-							Arrive
-						</li>
-						<li>
-							Duration
-						</li>
-						<li>
-							Price / Adult
-						</li>
-					</ul>
+				<div id="imageRight">
+					<img id="imgRight" src="../../Images/image2.jpg"/>
 				</div>
-				<ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-					{flightLists}
-				</ReactCSSTransitionGroup>
+				<div style={styles.flightMainDiv}>
+					<div id="flightMainHeaderDiv" style={styles.flightMainHeaderDiv}>
+						<span>You have successfully found {this.state.flightCount} flights</span>
+					</div>
+					<div id="divFlights">
+						<ul>
+							<li>
+								Airline
+							</li>
+							<li>
+								Depart
+							</li>
+							<li>
+								Arrive
+							</li>
+							<li>
+								Duration
+							</li>
+							<li>
+								Price / Adult
+							</li>
+						</ul>
+					</div>
+					<ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+						{flightLists}
+					</ReactCSSTransitionGroup>
+				</div>
 			</div>
 		);
 	}
@@ -93,9 +101,10 @@ class Flight extends React.Component {
 
 var styles = {
 	flightMainDiv : {
-		marginLeft : 300,
+		marginLeft : 310,
 		width: 800,
-		height : 'auto'
+		height : 'auto',
+		border : '2px solid #D4E5F5'
 	},
 	flightMainHeaderDiv : {
 		backgroundColor : '#D4E5F5'
