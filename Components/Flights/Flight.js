@@ -107,7 +107,7 @@ var styles = {
 		border : '2px solid #D4E5F5'
 	},
 	flightMainHeaderDiv : {
-		backgroundColor : '#D4E5F5'
+		backgroundColor : '#4EA5DF'
 	}
 };
 

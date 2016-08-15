@@ -28,8 +28,18 @@
     font-size: 27px;
     padding-right: 0.5em;
     position: relative;
-    left : 150;
+    left : 280;
     top : 70;
+    animation-name: myanim;
+    animation-duration: 7s;
+}
+@keyframes myanim {
+    from {
+        left : 0;
+    }
+    to {
+        left : 280;
+    }
 }
 
 #flightMainHeaderDiv {
@@ -211,9 +221,9 @@
 }
 
 .sourceCircle {
-    background-color: #E2E2E2;
+    background-color: white;
     border : 2px solid black;
-    color : gray;
+    color : green;
     width: 100px;
     height: 100px;
     line-height: 100px;
@@ -221,11 +231,48 @@
     border-radius: 50px;
     margin-left: 60px;
     margin-top : 30px;
+    animation-name: sourceAnim;
+    animation-duration: 7s;
+}
+@keyframes sourceAnim {
+    from {
+        background-color: green;
+        color : white;
+    }
+    to {
+        background-color: white;
+        color : green;
+    }
+}
+
+@keyframes destAnim {
+    from {
+        background-color: white;
+        color : green;
+    }
+    to {
+        background-color: green;
+        color : white;
+    }
+}
+
+.imagepeoplediv {
+    background-color: red;
+    margin-top: 200px;
+    width: 300px
+    height: 200px;
+    position: relative;
+}
+
+.imageDiv1 {
+    width: 300px;
+    height: 300px;
+    position: relative;
 }
 .destinationCircle {
-    background-color: #E2E2E2;
+    background-color: green;
     border : 2px solid black;
-    color : gray;
+    color : white;
     width: 100px;
     height: 100px;
     line-height: 100px;
@@ -233,6 +280,8 @@
     border-radius: 50px;
     margin-left: 280px;
     margin-top : 30px;
+    animation-name: destAnim;
+    animation-duration: 7s;
 }
 .reviewHeader {
     width: 580px;
@@ -350,12 +399,31 @@
 
 #longimage {
     margin-top: 450px;
-    height: 370px;
+    height: 300px;
 }
 
 #imageDown {
-    height: 370px;
+    height: 300px;
     width: 100%;
+}
+
+.bannerAll {
+    box-shadow: 1px 1px 10px #888888;
+    animation-name: example;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    animation-direction: reverse;
+}
+
+@keyframes example {
+    from {
+        background-color: black;
+        color: orange;
+    }
+    to {
+        background-color: orange;
+        color : black;
+    }
 }
 #datePicker {
     position: absolute;
@@ -380,12 +448,12 @@
 
 #imgLeft {
     width: 300px;
-    height: 260px;
+    height: 314px;
 }
 
 #imgRight {
     width: 300px;
-    height: 260px;
+    height: 314px;
 }
 
 .indCity {
@@ -469,4 +537,30 @@
     width: 150px;
     height: 20px;
     background-color: red;
+}
+
+.calendarCity:after {
+    content: "\f073";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: gray;
+    font-size: 22px;
+    margin-top: -25px;
+    float: right;
+    padding-right: 5px;
+}
+
+#inrdiv:before {
+    content: "\f156";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: black;
+    font-size: 22px;
+    padding-left: -10px;
 }

@@ -59,8 +59,8 @@ class ReviewPrice extends React.Component {
 						You Pay 
 					</div>
 					<br/>
-					<div style={{float:'right',fontSize : '24px','fontFamily':'Optima'}}>
-						INR {this.state.totalPrice}
+					<div id="inrdiv" style={{float:'right',marginRight:'-50px',fontSize : '24px','fontFamily':'Optima'}}>
+						{this.state.totalPrice}
 					</div>
 				</div>
 			</div>
@@ -121,8 +121,8 @@ class ReviewTravel extends React.Component {
 }
 
 export default class Booking extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			currentbutton : 0,
 			bgcolor : 'green' , 
@@ -136,7 +136,9 @@ export default class Booking extends React.Component {
 				color : 'green'
 			} , this.forceUpdate());
 	}
-
+	componentDidMount() {
+	//	this.refs.imageDiv.src = "../../Images/twopeople.png";
+	}
 	render() {
 		var reviewStyle = { backgroundColor: this.state.bgcolor  , color : this.state.color};
 		var travellerStyle = { backgroundColor: this.state.color  , color : this.state.bgcolor};
@@ -175,6 +177,7 @@ export default class Booking extends React.Component {
 					<div className="continueButton" onClick={this.changeLayout.bind(this)}>
 						Continue
 					</div>
+
 				</div>
 			);
 		}
@@ -213,6 +216,7 @@ export default class Booking extends React.Component {
 					<div className="continueButton" onClick={this.changeLayout.bind(this)}>
 						Confirm Booking
 					</div>
+
 				</div>
 			);
 		}

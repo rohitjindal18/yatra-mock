@@ -280,10 +280,10 @@ export default class HomePage extends React.Component {
 										<td style={styles.homeBannerTdBig}>
 											<input style={styles.input.homeBannerTdBig} onKeyUp={this.searchArrival.bind(this)} type="text" placeholder="Select Destination" ref="destinationCity"></input>
 										</td>
-										<td style={styles.homeBannerTdBig} onClick={this.enableDatePicker.bind(this)}>
+										<td className="calendarCity" style={styles.homeBannerTdBig} onClick={this.enableDatePicker.bind(this)}>
 											{departureDate}
 										</td>
-										<td style={styles.homeBannerTdBig} onClick={this.enableDatePicker2.bind(this)}>
+										<td className="calendarCity" style={styles.homeBannerTdBig} onClick={this.enableDatePicker2.bind(this)}>
 											 {arrivalDate}
 										</td>
 										<td style={styles.homeBannerTdBig}>
@@ -302,20 +302,17 @@ export default class HomePage extends React.Component {
 						</div>
 					</div>
 						<div style = {styles.bottomBanners}>
-							<div key={0} style ={styles.bannerFirst}>
-								LOWEST FARE FINDER	
+							<div className="bannerAll" key={0} style ={styles.bannerFirst}>
+								CONVENIENT	
 							</div>
-							<div key={1} style ={styles.bannerRest}>
-							LOWEST FARE FINDER
-								
+							<div className="bannerAll" key={1} style ={styles.bannerRest}>
+								POCKET FRIENDLY	
 							</div>
-							<div key={2} style ={styles.bannerRest}>
-							LOWEST FARE FINDER
-								
+							<div className="bannerAll" key={2} style ={styles.bannerRest}>
+								AWESOME	
 							</div>
-							<div key={3} style ={styles.bannerRest}>
-							LOWEST FARE FINDER
-								
+							<div className="bannerAll" key={3} style ={styles.bannerRest}>
+								24 X 7
 							</div>
 
 						</div>
@@ -425,8 +422,6 @@ var styles = {
 		marginLeft : 250,
 		width : 190 ,
 		height : 60 ,
-		backgroundColor : 'black',
-		color : 'orange',
 		lineHeight: 4,
 		textAlign : 'center',
 		fontSize : 15,
@@ -436,8 +431,6 @@ var styles = {
 		marginLeft : 50,
 		width : 190 ,
 		height : 60 ,
-		backgroundColor : 'black',
-		color : 'orange',
 		lineHeight: 4,
 		textAlign : 'center',
 		fontSize : 15,
