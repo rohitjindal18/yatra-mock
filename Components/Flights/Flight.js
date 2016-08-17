@@ -1,7 +1,10 @@
 import React from 'react';
 import FlightLists from './FlightLists.js';
 import { browserHistory } from 'react-router';
+import CircularProgress from 'material-ui/CircularProgress';
+import RefreshIndicator from 'material-ui/RefreshIndicator';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+
 
 class Flight extends React.Component {
 	constructor(props){
@@ -12,7 +15,9 @@ class Flight extends React.Component {
 			sourceCity : "",
 			destinationCity : "",
 			flights : [],
-			flightIndex : -1
+			flightIndex : -1,
+			isLoaded : false ,
+			completed : 0
 		}
 	}
 	componentWillMount(){
@@ -22,6 +27,16 @@ class Flight extends React.Component {
 		} , this.componentMount);	
 	}
 
+	componentDidMount() {
+    	setTimeout(() => this.progress(),2000);
+	 }
+
+	 progress() {
+	 	this.setState({
+	 		isLoaded : !this.state.isLoaded
+	 	});
+	 }
+
 	componentMount() {
 		this.props.searchFlight(this.state.sourceCity , this.state.destinationCity);
 	}
@@ -30,23 +45,17 @@ class Flight extends React.Component {
 		if(this.state.isFirst){
 			this.setState({
 				isFirst : false
-			});	
+			} , this.updateFlight);	
 			return true;
-		}
-		else {
-			return (this.state.flightCount !== this.props.state.appState.flights.length);
 		}
 	}
 
-	componentDidUpdate() {
-		this.setState({
-			flightCount : this.props.state.appState.flights.length,
-			flights : this.props.state.appState.flights
-		});
+	updateFlight(){
+		flightCount : this.props.state.appState.flights.length;
+		flights : this.props.state.appState.flights;
 	}
 
 	bookFlight(index){
-		console.log("rohit"+this);
 
 		this.props.selectFlightIndex(index);
 		browserHistory.push('/booking');
@@ -59,43 +68,70 @@ class Flight extends React.Component {
 					<FlightLists key={index} val={index} flightName={elem.flightName} flightPrice={elem.price} flightDeparture={elem.departTime} flightArrival={elem.arrivalTime} flightDuration={elem.duration} handleBookingFlight={component.bookFlight.bind(component)}/>
 				);
 		});
-		return(
-			<div>
-				<div id="imageLeft">
-					<img id="imgLeft" src="../../Images/image1.jpg"/>
-				</div>
-				<div id="imageRight">
-					<img id="imgRight" src="../../Images/image2.jpg"/>
-				</div>
-				<div style={styles.flightMainDiv}>
-					<div id="flightMainHeaderDiv" style={styles.flightMainHeaderDiv}>
-						<span>You have successfully found {this.state.flightCount} flights</span>
+		if(!component.state.isLoaded) {
+			return(
+				<div>
+					<div id="imageLeft">
+						<img id="imgLeft" src="../../Images/image1.jpg"/>
 					</div>
-					<div id="divFlights">
-						<ul>
-							<li>
-								Airline
-							</li>
-							<li>
-								Depart
-							</li>
-							<li>
-								Arrive
-							</li>
-							<li>
-								Duration
-							</li>
-							<li>
-								Price / Adult
-							</li>
-						</ul>
+					<div id="imageRight">
+						<img id="imgRight" src="../../Images/image2.jpg"/>
 					</div>
-					<ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-						{flightLists}
-					</ReactCSSTransitionGroup>
+					<div >
+						<CircularProgress mode="determinate" value={this.state.completed} />
+					</div>
+					<div id="middleProgress" style={styles.container}>
+					    <RefreshIndicator
+					      size={50}
+					      left={70}
+					      top={0}
+					      loadingColor={"#FF9800"}
+					      status="loading"
+					      style={styles.refresh}
+					    />
+  					</div>
 				</div>
-			</div>
-		);
+			);
+		}
+		else if(component.state.isLoaded){
+			return(
+				<div>
+					<div id="imageLeft">
+						<img id="imgLeft" src="../../Images/image1.jpg"/>
+					</div>
+					<div id="imageRight">
+						<img id="imgRight" src="../../Images/image2.jpg"/>
+					</div>
+					<div style={styles.flightMainDiv}>
+						<div id="flightMainHeaderDiv" style={styles.flightMainHeaderDiv}>
+							<span>You have successfully found {this.props.state.appState.flights.length} flights</span>
+						</div>
+						<div id="divFlights">
+							<ul>
+								<li>
+									Airline
+								</li>
+								<li>
+									Depart
+								</li>
+								<li>
+									Arrive
+								</li>
+								<li>
+									Duration
+								</li>
+								<li>
+									Price / Adult
+								</li>
+							</ul>
+						</div>
+						<ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+							{flightLists}
+						</ReactCSSTransitionGroup>
+					</div>
+				</div>
+			);
+		}
 	}
 }
 
@@ -108,7 +144,14 @@ var styles = {
 	},
 	flightMainHeaderDiv : {
 		backgroundColor : '#4EA5DF'
-	}
+	},
+	container : {
+		position: 'relative'
+	},
+	refresh: {
+    display: 'inline-block',
+    position: 'relative',
+ 	 }
 };
 
 export default Flight;

@@ -1,12 +1,12 @@
-var API = {
-  getDashboard (email) {
-    email = email.toLowerCase().trim();
-    return fetch(`https://cheapass.in/api/dashboard/tracks/${email}`)
-    .then((response) => response.json());
+const baseConfig = {
+  headers : {
+    'Content-Type' : 'application/json'
   },
-
+  port : 7777 ,
+  host : 'http://localhost'
+};
+var API = {
   fetchFlightDetails(data) {
-    console.log("qqq"+JSON.stringify(data))
     var request = new Request('http://localhost:7777/fetchFlight', {
       method: 'POST', 
       mode: 'cors', 

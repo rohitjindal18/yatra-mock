@@ -1,9 +1,9 @@
 import API from '../API/API.js';
 export function searchFlight(sourceCity , destinationCity){
-	return (dispatch) => {
+	return (dispatch , getState) => {
 		API.fetchFlightDetails({
-        "sourceCity": sourceCity,
-        "destinationCity": destinationCity
+        	"sourceCity": sourceCity,
+        	"destinationCity": destinationCity
       	}).
 		then((response) => {
 				return dispatch({

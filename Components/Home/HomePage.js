@@ -1,6 +1,11 @@
 import React from 'react';
 import { browserHistory } from 'react-router';
 import DayPicker, { DateUtils } from "react-day-picker";
+import {flightSearchData} from '../../actions/actionCreator.js';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
+import Paper from 'material-ui/Paper';
+
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 class SearchDepartCityComponent extends React.Component {
@@ -59,6 +64,7 @@ export default class HomePage extends React.Component {
 			departDate : "Departure",
 			arrivalDate : "Arrival",
 			isDepartSelected : false,
+			noOfPeople : 1,
 			departDay : "",
 			departMonth : "",
 			departYear : "",
@@ -71,8 +77,9 @@ export default class HomePage extends React.Component {
   	searchFlights() {
   		var sourceC = this.refs.sourceCity.value.split(' ')[0];
   		var destinationC = this.refs.destinationCity.value.split(' ')[0];
-  		var peopleC = this.refs.peopleCount.value;
-  		this.props.flightSearchData(sourceC , destinationC , peopleC);
+  		var peopleC = this.state.noOfPeople;
+  		this.props.dispatch(flightSearchData(sourceC , destinationC , peopleC));
+  		//this.props.flightSearchData(sourceC , destinationC , peopleC);
   		browserHistory.push('/flight');
   	}
   	enableDatePicker() {
@@ -225,6 +232,11 @@ export default class HomePage extends React.Component {
 		});
 	}
 
+	handleChange = (event , index , value) => {
+		this.setState({
+			noOfPeople : value
+		});
+	}
 	clickArrival(cityName) {
 		this.refs.destinationCity.value = cityName;
 		this.setState({
@@ -286,14 +298,14 @@ export default class HomePage extends React.Component {
 										<td className="calendarCity" style={styles.homeBannerTdBig} onClick={this.enableDatePicker2.bind(this)}>
 											 {arrivalDate}
 										</td>
-										<td style={styles.homeBannerTdBig}>
-											<select className="travelCount" ref="peopleCount">
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
+										<td style={styles.homeBannerTdBigNew}>
+											<DropDownMenu style={styles.customWidth} autoWidth={false} value={this.state.noOfPeople} onChange={this.handleChange}>
+									          <MenuItem value={1} primaryText="1" />
+									          <MenuItem value={2} primaryText="2" />
+									          <MenuItem value={3} primaryText="3" />
+									          <MenuItem value={4} primaryText="4" />
+									          <MenuItem value={5} primaryText="5" />
+									        </DropDownMenu>
 										</td>
 										<td id="searchTd" style={styles.homeBannerTdSmall} onClick={this.searchFlights.bind(this)}></td>
 									</tr>
@@ -367,13 +379,22 @@ var styles = {
 		opacity : 1
 	},
 	homeBannerTdBig : {
-		width : 177 ,
+		width : 377 ,
 		height : 44 ,
 		backgroundColor : 'white',
 		border : '1px solid #282929',
 		borderRadius : 8,
 		overflow : 'hidden',
 	} ,
+
+	homeBannerTdBigNew : {
+		width : 75 ,
+		height : 44 ,
+		backgroundColor : 'white',
+		border : '1px solid #282929',
+		borderRadius : 8,
+		overflow : 'hidden',
+	},
 	homeBannerTdSmall : {
 		width : 65 ,
 		height : 44,
@@ -389,6 +410,9 @@ var styles = {
 			opacity : 1
 		}
 	},
+	customWidth: {
+   		 width: 75,
+  	},
 	homeheading : {
 		position : 'absolute',
 		marginLeft : 200 ,

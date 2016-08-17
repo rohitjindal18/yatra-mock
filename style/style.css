@@ -376,11 +376,17 @@
 
 
 .travelCount {
-    width: 100%;
+    width: 377px;
     height: 100%;
     background-color: white;
     color : gray;
     font-size: 20px;
+}
+
+#middleProgress {
+    margin-left: 600px;
+    margin-top: 100px;
+    position: absolute;
 }
 
 #depDate {
@@ -413,6 +419,7 @@
     animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-direction: reverse;
+    font-family: 'Roboto', sans-serif;
 }
 
 @keyframes example {

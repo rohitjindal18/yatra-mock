@@ -5,16 +5,22 @@ import FlightMain from './Components/Flights/FlightMain.js';
 import BookingMain from './Components/Booking/BookingMain.js';
 import store from './store/configStore.js';
 import { Provider } from 'react-redux';
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import {Router} from 'react-router';
 import {DefaultRoute , Link , Route , RouteHandler , browserHistory , IndexRoute} from 'react-router';
 
+injectTapEventPlugin();
+
 class App extends React.Component {
   render() {
     return (
-    	<Provider store={store}>
-      		<HomePageMain {...this.props}/>
-    	</Provider>
+      <MuiThemeProvider>
+      	<Provider store={store}>
+        		<HomePageMain {...this.props}/>
+      	</Provider>
+      </MuiThemeProvider>
     );
   }
 }
@@ -22,9 +28,11 @@ class App extends React.Component {
 class Flightmain extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-          <FlightMain {...this.props}/>
-      </Provider>
+      <MuiThemeProvider>
+        <Provider store={store}>
+            <FlightMain {...this.props}/>
+        </Provider>
+      </MuiThemeProvider>
     );
   }
 }

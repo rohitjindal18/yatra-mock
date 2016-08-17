@@ -15,6 +15,6 @@ function mapDispatchToProps(dispatch){
 	return bindActionCreators(actionCreators , dispatch);
 }
 
-const HomePageMain = connect(mapStateToProps , mapDispatchToProps)(HomePage);
+const HomePageMain = connect(mapStateToProps)(HomePage);
 
 export default HomePageMain;
