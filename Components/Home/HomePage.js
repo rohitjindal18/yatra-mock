@@ -6,6 +6,7 @@ import {flightSearchData} from '../../actions/actionCreator.js';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
+import Menu from 'material-ui/Menu';
 
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
@@ -16,9 +17,6 @@ class SearchDepartCityComponent extends React.Component {
 			currentIndex : -1
 		}
 	}
-	handleCityClick(cityName) {
-		this.props.clickedDepartCity(cityName);
-	}
 
 	componentWillReceiveProps() {
 		this.setState({
@@ -26,22 +24,29 @@ class SearchDepartCityComponent extends React.Component {
 		});
 	}
 
+	handleOnChange = (event , item , index) => {
+		this.props.clickedDepartCity(item.props.primaryText.split(' ')[0]);
+	}
+
 	render(){
 		var cityHolder = [];
 		var component = this;
 		this.props.searchedCity.map(function(elem ,index) {
-			if(index != component.state.currentIndex){
-				cityHolder.push(<div style={divStyles.backColor}  ref={index} key={index} className="indCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
-			}
-			else {
-				cityHolder.push(<div style={divStyles.backColor2}  ref={index} key={index} className="indCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
-			}
+				cityHolder.push(<MenuItem key={index} style={styless.menuBackColor} primaryText={elem} rightIcon={
+					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M2.5 19h19v2h-19zm19.57-9.36c-.21-.8-1.04-1.28-1.84-1.06L14.92 10l-6.9-6.43-1.93.51 4.14 7.17-4.97 1.33-1.97-1.54-1.45.39 1.82 3.16.77 1.33 1.6-.43 5.31-1.42 4.35-1.16L21 11.49c.81-.23 1.28-1.05 1.07-1.85z"/></svg>
+				}/>);
 		});
 		return(
-			<div>
-				{cityHolder}
-			</div>
+				<Menu disableAutoFocus={true} onItemTouchTap={this.handleOnChange.bind(this)} >
+					{cityHolder}
+				</Menu>
 		);
+	}
+};
+
+var styless = {
+	menuBackColor : {
+		backgroundColor : 'white'
 	}
 }
 
@@ -52,14 +57,15 @@ class SearchArrivalCityComponent extends React.Component {
 			currentIndex : -1
 		}
 	}
-	handleCityClick(cityName) {
-		this.props.clickedArrivalCity(cityName);
-	}
-
+	
 	componentWillReceiveProps() {
 		this.setState({
 			currentIndex : this.props.isFocussed
 		});
+	}
+
+	handleOnChange = (event , item , index) => {
+		this.props.clickedArrivalCity(item.props.primaryText.split(' ')[0]);
 	}
 
 	componentDidUpdate() {
@@ -69,18 +75,14 @@ class SearchArrivalCityComponent extends React.Component {
 		var cityHolder = [];
 		var component = this;
 		this.props.searchedCity.map(function(elem ,index) {
-			if(index != component.state.currentIndex){
-				cityHolder.push(<div style={divStyles.backColor}  ref={index} key={index} className="depCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
-			}
-			else {
-				cityHolder.push(<div style={divStyles.backColor2}  ref={index} key={index} className="depCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
-			}
-			
+			cityHolder.push(<MenuItem key={index} style={styless.menuBackColor} primaryText={elem} rightIcon={
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M2.5 19h19v2h-19zm7.18-5.73l4.35 1.16 5.31 1.42c.8.21 1.62-.26 1.84-1.06.21-.8-.26-1.62-1.06-1.84l-5.31-1.42-2.76-9.02L10.12 2v8.28L5.15 8.95l-.93-2.32-1.45-.39v5.17l1.6.43 5.31 1.43z"/></svg>
+			}/>);
 		});
 		return(
-			<div>
+			<Menu disableAutoFocus={true} onItemTouchTap={this.handleOnChange.bind(this)} >
 				{cityHolder}
-			</div>
+			</Menu>
 		);
 	}
 };
@@ -401,7 +403,7 @@ export default class HomePage extends React.Component {
 							</div>
 
 						</div>
-						<div className="departCityDiv" >
+						<div className="departCityDiv"  >
 							<SearchDepartCityComponent isFocussed={this.state.currentFocusIndexD} clickedDepartCity={this.clickDepart.bind(this)} searchedCity={this.state.searchedCities}/>
 						</div>
 						<div className="arrivalCityDiv">
