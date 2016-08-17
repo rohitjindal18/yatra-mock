@@ -546,6 +546,11 @@
     background-color: red;
 }
 
+.searchC:focus {
+    background-color: yellow;
+    border : 5px solid red;
+}
+
 .calendarCity:after {
     content: "\f073";
     font-family: FontAwesome;

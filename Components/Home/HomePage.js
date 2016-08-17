@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { browserHistory } from 'react-router';
 import DayPicker, { DateUtils } from "react-day-picker";
 import {flightSearchData} from '../../actions/actionCreator.js';
@@ -11,15 +12,30 @@ var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 class SearchDepartCityComponent extends React.Component {
 	constructor(props){
 		super(props);
+		this.state = {
+			currentIndex : -1
+		}
 	}
 	handleCityClick(cityName) {
 		this.props.clickedDepartCity(cityName);
 	}
+
+	componentWillReceiveProps() {
+		this.setState({
+			currentIndex : this.props.isFocussed
+		});
+	}
+
 	render(){
 		var cityHolder = [];
 		var component = this;
 		this.props.searchedCity.map(function(elem ,index) {
-			cityHolder.push(<div key={index} className="indCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
+			if(index != component.state.currentIndex){
+				cityHolder.push(<div style={divStyles.backColor}  ref={index} key={index} className="indCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
+			}
+			else {
+				cityHolder.push(<div style={divStyles.backColor2}  ref={index} key={index} className="indCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
+			}
 		});
 		return(
 			<div>
@@ -32,15 +48,34 @@ class SearchDepartCityComponent extends React.Component {
 class SearchArrivalCityComponent extends React.Component {
 	constructor(props){
 		super(props);
+		this.state = {
+			currentIndex : -1
+		}
 	}
 	handleCityClick(cityName) {
 		this.props.clickedArrivalCity(cityName);
+	}
+
+	componentWillReceiveProps() {
+		this.setState({
+			currentIndex : this.props.isFocussed
+		});
+	}
+
+	componentDidUpdate() {
+
 	}
 	render(){
 		var cityHolder = [];
 		var component = this;
 		this.props.searchedCity.map(function(elem ,index) {
-			cityHolder.push(<div key={index} className="depCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
+			if(index != component.state.currentIndex){
+				cityHolder.push(<div style={divStyles.backColor}  ref={index} key={index} className="depCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
+			}
+			else {
+				cityHolder.push(<div style={divStyles.backColor2}  ref={index} key={index} className="depCity" onClick={component.handleCityClick.bind(component ,elem)}>{elem}</div>);
+			}
+			
 		});
 		return(
 			<div>
@@ -48,7 +83,17 @@ class SearchArrivalCityComponent extends React.Component {
 			</div>
 		);
 	}
+};
+
+var divStyles = {
+	backColor : {
+		backgroundColor : 'white'
+	},
+	backColor2 : {
+		backgroundColor : 'silver'
+	}
 }
+
 
 export default class HomePage extends React.Component {
 	constructor(){
@@ -70,7 +115,9 @@ export default class HomePage extends React.Component {
 			departYear : "",
 			citiesArray : ["Bangalore (BLR)" , "Delhi (DEL)" , "Mumbai (MUM)" , "Pune (PUN)" , "Chennai (CHN)" , "Lucknow (LKO)","Chandigarh (CDH)" , "Goa (PJN)"],
 			searchedCities : [],
-			searchedDepCities : []
+			searchedDepCities : [],
+			currentFocusIndex : -1,
+			currentFocusIndexD : -1
 		};
 	}
 
@@ -244,6 +291,32 @@ export default class HomePage extends React.Component {
 		});
 	}
 
+	keyPressed(event) {
+		if(event.keyCode == 40){
+			this.setState({
+				currentFocusIndex : this.state.currentFocusIndex + 1
+			});
+		}
+		else if(event.keyCode == 38){
+			this.setState({
+				currentFocusIndex : this.state.currentFocusIndex - 1
+			});
+		}
+	}
+
+	keyPressedD(event) {
+		if(event.keyCode == 40){
+			this.setState({
+				currentFocusIndexD : this.state.currentFocusIndexD + 1
+			});
+		}
+		else if(event.keyCode == 38){
+			this.setState({
+				currentFocusIndexD : this.state.currentFocusIndexD - 1
+			});
+		}
+	}
+
 	render() {
 		var component = this;
 		var departuredatePick = (
@@ -287,10 +360,10 @@ export default class HomePage extends React.Component {
 								<tbody>
 									<tr>
 										<td style={styles.homeBannerTdBig}>
-											<input style={styles.input.homeBannerTdBig} onKeyUp={this.searchDeparture.bind(this)} type="text" placeholder="Select Origin" ref="sourceCity"></input>
+											<input style={styles.input.homeBannerTdBig} onKeyDown={this.keyPressedD.bind(this)} onKeyUp={this.searchDeparture.bind(this)} type="text" placeholder="Select Origin" ref="sourceCity"></input>
 										</td>
 										<td style={styles.homeBannerTdBig}>
-											<input style={styles.input.homeBannerTdBig} onKeyUp={this.searchArrival.bind(this)} type="text" placeholder="Select Destination" ref="destinationCity"></input>
+											<input style={styles.input.homeBannerTdBig} onKeyDown={this.keyPressed.bind(this)} onKeyUp={this.searchArrival.bind(this)} type="text" placeholder="Select Destination" ref="destinationCity"></input>
 										</td>
 										<td className="calendarCity" style={styles.homeBannerTdBig} onClick={this.enableDatePicker.bind(this)}>
 											{departureDate}
@@ -328,11 +401,11 @@ export default class HomePage extends React.Component {
 							</div>
 
 						</div>
-						<div className="departCityDiv">
-							<SearchDepartCityComponent clickedDepartCity={this.clickDepart.bind(this)} searchedCity={this.state.searchedCities}/>
+						<div className="departCityDiv" >
+							<SearchDepartCityComponent isFocussed={this.state.currentFocusIndexD} clickedDepartCity={this.clickDepart.bind(this)} searchedCity={this.state.searchedCities}/>
 						</div>
 						<div className="arrivalCityDiv">
-							<SearchArrivalCityComponent clickedArrivalCity={this.clickArrival.bind(this)} searchedCity={this.state.searchedDepCities}/>
+							<SearchArrivalCityComponent isFocussed={this.state.currentFocusIndex} clickedArrivalCity={this.clickArrival.bind(this)} searchedCity={this.state.searchedDepCities}/>
 						</div>
 						{departuredatePick}
 						{arrivaldatePick}
@@ -407,7 +480,8 @@ var styles = {
 			border : 'none',
 			fontFamily : 'Optima',
 			fontSize : 18,
-			opacity : 1
+			opacity : 1,
+			outline : 'none'
 		}
 	},
 	customWidth: {
