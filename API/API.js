@@ -17,7 +17,8 @@ var API = {
       body : JSON.stringify(data)
     });
     return fetch(request)
-    .then(response => response.json())
+    .then(
+      response => response.json())
     .then(response => {
       console.log('fetchFlightDetails success ', response);
       return response;

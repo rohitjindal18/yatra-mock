@@ -3,6 +3,7 @@ import FlightLists from './FlightLists.js';
 import { browserHistory } from 'react-router';
 import CircularProgress from 'material-ui/CircularProgress';
 import RefreshIndicator from 'material-ui/RefreshIndicator';
+import Paper from 'material-ui/Paper';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 
@@ -96,39 +97,41 @@ class Flight extends React.Component {
 		else if(component.state.isLoaded){
 			return(
 				<div>
-					<div id="imageLeft">
-						<img id="imgLeft" src="../../Images/image1.jpg"/>
-					</div>
-					<div id="imageRight">
-						<img id="imgRight" src="../../Images/image2.jpg"/>
-					</div>
-					<div style={styles.flightMainDiv}>
-						<div id="flightMainHeaderDiv" style={styles.flightMainHeaderDiv}>
-							<span>You have successfully found {this.props.state.appState.flights.length} flights</span>
+					<Paper zDepth={5}>
+						<div id="imageLeft">
+							<img id="imgLeft" src="../../Images/image1.jpg"/>
 						</div>
-						<div id="divFlights">
-							<ul>
-								<li>
-									Airline
-								</li>
-								<li>
-									Depart
-								</li>
-								<li>
-									Arrive
-								</li>
-								<li>
-									Duration
-								</li>
-								<li>
-									Price / Adult
-								</li>
-							</ul>
+						<div id="imageRight">
+							<img id="imgRight" src="../../Images/image2.jpg"/>
 						</div>
-						<ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-							{flightLists}
-						</ReactCSSTransitionGroup>
-					</div>
+						<div style={styles.flightMainDiv}>
+							<div id="flightMainHeaderDiv" style={styles.flightMainHeaderDiv}>
+								<span>You have successfully found {this.props.state.appState.flights.length} flights</span>
+							</div>
+							<div id="divFlights">
+								<ul>
+									<li>
+										Airline
+									</li>
+									<li>
+										Depart
+									</li>
+									<li>
+										Arrive
+									</li>
+									<li>
+										Duration
+									</li>
+									<li>
+										Price / Adult
+									</li>
+								</ul>
+							</div>
+							<ReactCSSTransitionGroup transitionName="example" transitionAppear={true} transitionAppearTimeout={500} transitionEnterTimeout={500} transitionLeaveTimeout={500}>
+								{flightLists}
+							</ReactCSSTransitionGroup>
+						</div>
+					</Paper>
 				</div>
 			);
 		}

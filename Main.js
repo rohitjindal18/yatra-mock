@@ -40,9 +40,11 @@ class Flightmain extends React.Component {
 class Bookingmain extends React.Component {
   render() {
     return (
-      <Provider store={store}>
-          <BookingMain {...this.props}/>
-      </Provider>
+      <MuiThemeProvider>
+        <Provider store={store}>
+            <BookingMain {...this.props}/>
+        </Provider>
+      </MuiThemeProvider>
     );
   }
 }
