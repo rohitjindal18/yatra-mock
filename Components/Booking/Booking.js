@@ -1,23 +1,27 @@
 import React from 'react';
+import Paper from 'material-ui/Paper';
+
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 class ReviewBooking extends React.Component {
 	render() {
 		return(
-			<div className="ReviewBookingClass">
-				<div className="reviewHeader">
-					Review Your Booking
+			<Paper zDepth={3}>
+				<div className="ReviewBookingClass">
+					<div className="reviewHeader">
+						Review Your Booking
+					</div>
+					<div className="Circle">
+						<div className="sourceCircle">
+							<strong>{this.props.state.appState.sourceCity}</strong>
+						</div>
+						<div className="planeCircle">
+						</div>
+						<div className="destinationCircle">
+							<strong>{this.props.state.appState.destinationCity}</strong>
+						</div>
+					</div>
 				</div>
-				<div className="Circle">
-					<div className="sourceCircle">
-						<strong>{this.props.state.appState.sourceCity}</strong>
-					</div>
-					<div className="planeCircle">
-					</div>
-					<div className="destinationCircle">
-						<strong>{this.props.state.appState.destinationCity}</strong>
-					</div>
-				</div>
-			</div>
+			</Paper>
 		);
 	}
 }
@@ -40,30 +44,34 @@ class ReviewPrice extends React.Component {
 	}
 	render() {
 		return(
-			<div>
-				<div className="priceHeader">
-					Fare Details
-				</div>
+			
 				<div>
-					<div >
-						<div style={{float:'left'}}>
-							Adult x {this.state.travellerCount}
+			
+					<div className="priceHeader">
+						Fare Details
+					</div>
+					<div>
+						<div >
+							<div style={{float:'left'}}>
+								Adult x {this.state.travellerCount}
+							</div>
+							<div style={{float:'right',paddingRight : '10px'}}>
+								{this.state.flightPrice}
+							</div>
 						</div>
-						<div style={{float:'right',paddingRight : '10px'}}>
-							{this.state.flightPrice}
+						<br/>
+						<br/>
+						<div style={{float:'right',paddingRight : '10px','fontFamily':'Optima'}}>
+							You Pay 
+						</div>
+						<br/>
+						<div id="inrdiv" style={{float:'right',marginRight:'-50px',fontSize : '24px','fontFamily':'Optima'}}>
+							{this.state.totalPrice}
 						</div>
 					</div>
-					<br/>
-					<br/>
-					<div style={{float:'right',paddingRight : '10px','fontFamily':'Optima'}}>
-						You Pay 
-					</div>
-					<br/>
-					<div id="inrdiv" style={{float:'right',marginRight:'-50px',fontSize : '24px','fontFamily':'Optima'}}>
-						{this.state.totalPrice}
-					</div>
+						
 				</div>
-			</div>
+		
 		);
 	}
 }
@@ -108,6 +116,7 @@ class ReviewTravel extends React.Component {
 	}
 	render() {
 		return(
+			<Paper zDepth={3}>
 			<div className="TravelBookingClass">
 				<div className="travelHeader">
 					Traveller Details
@@ -116,6 +125,7 @@ class ReviewTravel extends React.Component {
 					<TravelDetail {...this.props}/>
 				</div>
 			</div>
+			</Paper>
 		);
 	}
 }
@@ -170,9 +180,11 @@ export default class Booking extends React.Component {
 						<div id="reviewBook">
 							<ReviewBooking {...this.props}/>
 						</div>
+						
 						<div className="reviewPrice">
 							<ReviewPrice {...this.props}/>
 						</div>
+					
 					</div>
 					<div className="continueButton" onClick={this.changeLayout.bind(this)}>
 						Continue

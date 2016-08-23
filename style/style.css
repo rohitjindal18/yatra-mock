@@ -206,7 +206,6 @@
     margin-top: 20px;
     width: 600px;
     height: 200px;
-    border-radius: 5px;
 }
 
 .TravelBookingClass {
@@ -287,7 +286,6 @@
     width: 580px;
     height: 35px;
     background-color: #E2E2E2;
-    border-radius: 5px;
     line-height: 35px;
     padding-left: 20px;
     font-family: Optima;
@@ -327,7 +325,6 @@
     width: 250px;
     height: 35px;
     background-color: #E2E2E2;
-    border-radius: 5px;
     line-height: 35px;
     padding-left: 20px;
     font-family: Optima;
@@ -376,11 +373,17 @@
 
 
 .travelCount {
-    width: 100%;
+    width: 377px;
     height: 100%;
     background-color: white;
     color : gray;
     font-size: 20px;
+}
+
+#middleProgress {
+    margin-left: 600px;
+    margin-top: 100px;
+    position: absolute;
 }
 
 #depDate {
@@ -413,6 +416,7 @@
     animation-duration: 5s;
     animation-iteration-count: infinite;
     animation-direction: reverse;
+    font-family: 'Roboto', sans-serif;
 }
 
 @keyframes example {
@@ -428,9 +432,21 @@
 #datePicker {
     position: absolute;
     z-index: 100;
-    margin-left: 550px;
-    margin-top: 200px;
-    width: 270px;
+    margin-left: 555px;
+    margin-top: 205px;
+    width: 400px;
+    background-color: white;
+    color :black;
+    text-align: center;
+    border : 1px solid gray;
+}
+
+#ArrivaldatePicker {
+    position: absolute;
+    z-index: 100;
+    margin-left: 795px;
+    margin-top: 205px;
+    width: 400px;
     background-color: white;
     color :black;
     text-align: center;
@@ -509,15 +525,13 @@
     margin-top: 195px;
     position: absolute;
     width: 350px;
-    background-color: white;
 }
 
 .arrivalCityDiv {
-    margin-left: 400px;
+    margin-left: 410px;
     margin-top: 195px;
     position: absolute;
     width: 350px;
-    background-color: white;
 }
 
 #datePicker2 {
@@ -539,6 +553,11 @@
     background-color: red;
 }
 
+.searchC:focus {
+    background-color: yellow;
+    border : 5px solid red;
+}
+
 .calendarCity:after {
     content: "\f073";
     font-family: FontAwesome;
@@ -551,6 +570,129 @@
     margin-top: -25px;
     float: right;
     padding-right: 5px;
+}
+
+.dateDivPicker {
+    display: inline-flex;
+}
+
+.monthDivPicker {
+    width: 100px;
+    height: 100%;
+    background-color: #EDEDED;
+    margin-left: -100px;
+}
+
+.ulDiv {
+    list-style: none;
+    text-align: left;
+    margin-left: -30px;
+    margin-top: 4px;
+}
+
+.dayTableDiv {
+    width: 400px;
+    height: 240px;
+}
+
+.noBorder {
+    border : none;
+}
+.dayDiv {
+    width: 30px
+    height  : 30px;
+    border : 1px solid #00B5D3;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-family: Optima;
+}
+
+.dayTodayDiv {
+    width: 40px
+    height  : 40px;
+    border : 1px solid #00B5D3;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-family: Optima;
+    color : blue;
+}
+
+.daySelectedDiv {
+    width: 40px
+    height  : 40px;
+    border : 1px solid #00B5D3;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-family: Optima;
+    color : white;
+    background-color: #00B5D3;
+}
+
+
+.inActiveDayDiv {
+    width: 40px
+    height  : 40px;
+    border : 1px solid gray;
+    background-color: white;
+    color : gray;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-family: Optima;
+}
+.weekLiDiv{
+    padding-left: 11px;
+    padding-right: 10px;
+    color : #00B5D3;
+    font-family: Optima;
+    text-transform: uppercase;
+}
+
+.dayLiDiv {
+    padding-left: 24px;
+    padding-right: 25px;
+}
+
+.departHeader {
+    width: 494px;
+    margin-left: -104px;
+    height: 40px;
+    background-color: #3F4044;
+    color: white;
+    text-align: left;
+    font-family: Optima;
+    line-height: 40px;
+    padding-left: 10px;
+}
+
+.rightMonthDiv {
+    width: 405px;
+}
+
+.liDiv {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.liSelectedDiv {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: #00B5D3;
+    margin-left: -10px;
+    padding-left: 10px;
+    color:  white;
+
 }
 
 #inrdiv:before {

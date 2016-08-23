@@ -6,7 +6,6 @@ export default class FlightLists extends React.Component {
 	}
 	render() {
 		return(
-			
 				<div id="flightListMainDiv">
 						<div id="flightListTopDiv" key={this.props.val}>
 							<ul>
