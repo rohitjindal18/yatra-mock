@@ -7,6 +7,8 @@ import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 import Paper from 'material-ui/Paper';
 import Menu from 'material-ui/Menu';
+import DepartureDatePicker from './DepartureDatePicker.js';
+import ArrivalDatePicker from './ArrivalDatePicker.js';
 
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
@@ -66,10 +68,6 @@ class SearchArrivalCityComponent extends React.Component {
 
 	handleOnChange = (event , item , index) => {
 		this.props.clickedArrivalCity(item.props.primaryText.split(' ')[0]);
-	}
-
-	componentDidUpdate() {
-
 	}
 	render(){
 		var cityHolder = [];
@@ -164,70 +162,70 @@ export default class HomePage extends React.Component {
   		
   	}
 
-  	handleDayClick(e, day, { selected, disabled }) {
-	    if (disabled) {
-	      return;
-	    }
-	    if (selected) {
-	      	var date = day.getDate();
-	   	 	var month = day.getMonth()+1;
-	    	var year = day.getFullYear();
-	    	this.setState({ selectedDay: null,
-		    	departDate : year+"-"+month+"-"+date,
-		      	isEnabled : 'none',
-			  	isClicked : 0,
-			  	departDay : date ,
-			  	departMonth : month ,
-			  	departYear : year
-		    });
-	    } else {
-	      	var date = day.getDate();
-	   	 	var month = day.getMonth()+1;
-	    	var year = day.getFullYear();
+  	// handleDayClick(e, day, { selected, disabled }) {
+	  //   if (disabled) {
+	  //     return;
+	  //   }
+	  //   if (selected) {
+	  //     	var date = day.getDate();
+	  //  	 	var month = day.getMonth()+1;
+	  //   	var year = day.getFullYear();
+	  //   	this.setState({ selectedDay: null,
+		 //    	departDate : year+"-"+month+"-"+date,
+		 //      	isEnabled : 'none',
+			//   	isClicked : 0,
+			//   	departDay : date ,
+			//   	departMonth : month ,
+			//   	departYear : year
+		 //    });
+	  //   } else {
+	  //     	var date = day.getDate();
+	  //  	 	var month = day.getMonth()+1;
+	  //   	var year = day.getFullYear();
 
-	    	if(day > this.state.selectedDay2 & this.state.arrivalDate.indexOf("Arrival") == -1){
-	    		this.setState({
-	    			selectedDay2 : day,
-	    			arrivalDate : year+"-"+month+"-"+date
-	    		});
-	    	}
-		    this.setState({ selectedDay: day,
-		    	departDate : year+"-"+month+"-"+date,
-		      	isEnabled : 'none',
-			  	isClicked : 0,
-			  	isDepartSelected : true,
-			  	departDay : date ,
-			  	departMonth : month ,
-			  	departYear : year
-		    });
-	    }
-  	}
+	  //   	if(day > this.state.selectedDay2 & this.state.arrivalDate.indexOf("Arrival") == -1){
+	  //   		this.setState({
+	  //   			selectedDay2 : day,
+	  //   			arrivalDate : year+"-"+month+"-"+date
+	  //   		});
+	  //   	}
+		 //    this.setState({ selectedDay: day,
+		 //    	departDate : year+"-"+month+"-"+date,
+		 //      	isEnabled : 'none',
+			//   	isClicked : 0,
+			//   	isDepartSelected : true,
+			//   	departDay : date ,
+			//   	departMonth : month ,
+			//   	departYear : year
+		 //    });
+	  //   }
+  	// }
 
-  	handleDayClick2(e, day, { selected, disabled }) {
-	    if (disabled) {
-	      return;
-	    }
-	    if (selected) {
-	      	var date = day.getDate();
-	   	 	var month = day.getMonth()+1;
-	    	var year = day.getFullYear();
-	    	this.setState({ selectedDay2: null,
-		    	arrivalDate : year+"-"+month+"-"+date,
-		      	isEnabled2 : 'none',
-			  	isClicked2 : 0
-		    });
-	    } else {
-	      	var date = day.getDate();
-	   	 	var month = day.getMonth()+1;
-	    	var year = day.getFullYear();
+  	// handleDayClick2(e, day, { selected, disabled }) {
+	  //   if (disabled) {
+	  //     return;
+	  //   }
+	  //   if (selected) {
+	  //     	var date = day.getDate();
+	  //  	 	var month = day.getMonth()+1;
+	  //   	var year = day.getFullYear();
+	  //   	this.setState({ selectedDay2: null,
+		 //    	arrivalDate : year+"-"+month+"-"+date,
+		 //      	isEnabled2 : 'none',
+			//   	isClicked2 : 0
+		 //    });
+	  //   } else {
+	  //     	var date = day.getDate();
+	  //  	 	var month = day.getMonth()+1;
+	  //   	var year = day.getFullYear();
 
-		    this.setState({ selectedDay2: day,
-		    	arrivalDate : year+"-"+month+"-"+date,
-		      	isEnabled2 : 'none',
-			  	isClicked2 : 0
-		    });
-	    }
-  	}
+		 //    this.setState({ selectedDay2: day,
+		 //    	arrivalDate : year+"-"+month+"-"+date,
+		 //      	isEnabled2 : 'none',
+			//   	isClicked2 : 0
+		 //    });
+	  //   }
+  	// }
 
   	sunday(day) {
  		 return ((day < this.state.selectedDay));
@@ -319,28 +317,48 @@ export default class HomePage extends React.Component {
 		}
 	}
 
+	departureDateSelected(day){
+		var date = new Date(day).getDate();
+   	 	var month = new Date(day).getMonth()+1;
+    	var year = new Date(day).getFullYear();
+
+    	// if(day > this.state.selectedDay2 & this.state.arrivalDate.indexOf("Arrival") == -1){
+    	// 	this.setState({
+    	// 		selectedDay2 : day,
+    	// 		arrivalDate : year+"-"+month+"-"+date
+    	// 	});
+    	// }
+	    this.setState({ selectedDay: day,
+	    	departDate : year+"-"+month+"-"+date,
+	      	isEnabled : 'none',
+		  	isClicked : 0,
+		  	isDepartSelected : true,
+		  	departDay : date ,
+		  	departMonth : month ,
+		  	departYear : year
+	    });
+	}
+
+	arrivalDateSelected(day) {
+			var date = new Date(day).getDate();
+	   	 	var month = new Date(day).getMonth()+1;
+	    	var year = new Date(day).getFullYear();
+
+		    this.setState({ selectedDay2: day,
+		    	arrivalDate : year+"-"+month+"-"+date,
+		      	isEnabled2 : 'none',
+			  	isClicked2 : 0
+		    });
+	}
+
 	render() {
 		var component = this;
 		var departuredatePick = (
-			<DayPicker 
-				id="datePicker"
-		 		style = {{'display':this.state.isEnabled}}
-		 		disabledDays = {this.currentDate}
-		        initialMonth={ new Date(new Date().getFullYear() , new Date().getMonth()) }
-		        selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) }
-		        onDayClick={ this.handleDayClick.bind(this) }
-		    />
+		    <DepartureDatePicker handleDepartDate={this.departureDateSelected.bind(this)} isEnabled={this.state.isEnabled}/>
 		);
 
 		var arrivaldatePick = (
-			<DayPicker 
-				id="datePicker2"
-		 		style = {{'display':this.state.isEnabled2}}
-		 		disabledDays = {this.sunday.bind(component)}
-		        initialMonth={ new Date(this.state.departYear, this.state.departMonth-1) }
-		        selectedDays={ day => DateUtils.isSameDay(this.state.selectedDay, day) }
-		        onDayClick={ this.handleDayClick2.bind(this) }
-		    />
+		    <ArrivalDatePicker handleArrivalDate={this.arrivalDateSelected.bind(this)} isEnabled={this.state.isEnabled2}/>
 		);
 
 		var departureDate = (
