@@ -599,9 +599,9 @@
     border : none;
 }
 .dayDiv {
-    width: 40px
-    height  : 40px;
-    border : 1px solid green;
+    width: 30px
+    height  : 30px;
+    border : 1px solid #00B5D3;
     border-radius: 15px;
     text-align: center;
     margin-left: 10px;
@@ -613,7 +613,7 @@
 .dayTodayDiv {
     width: 40px
     height  : 40px;
-    border : 1px solid green;
+    border : 1px solid #00B5D3;
     border-radius: 15px;
     text-align: center;
     margin-left: 10px;
@@ -626,7 +626,7 @@
 .daySelectedDiv {
     width: 40px
     height  : 40px;
-    border : 1px solid green;
+    border : 1px solid #00B5D3;
     border-radius: 15px;
     text-align: center;
     margin-left: 10px;
@@ -634,8 +634,9 @@
     font-size: 20px;
     font-family: Optima;
     color : white;
-    background-color: green;
+    background-color: #00B5D3;
 }
+
 
 .inActiveDayDiv {
     width: 40px
@@ -651,8 +652,11 @@
     font-family: Optima;
 }
 .weekLiDiv{
-    padding-left: 10px;
+    padding-left: 11px;
     padding-right: 10px;
+    color : #00B5D3;
+    font-family: Optima;
+    text-transform: uppercase;
 }
 
 .dayLiDiv {
@@ -684,9 +688,11 @@
 .liSelectedDiv {
     padding-top: 5px;
     padding-bottom: 5px;
-    background-color: white;
+    background-color: #00B5D3;
     margin-left: -10px;
     padding-left: 10px;
+    color:  white;
+
 }
 
 #inrdiv:before {
