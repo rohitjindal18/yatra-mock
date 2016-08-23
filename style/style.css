@@ -599,8 +599,8 @@
     border : none;
 }
 .dayDiv {
-    width: 50px
-    height  : 50px;
+    width: 40px
+    height  : 40px;
     border : 1px solid green;
     border-radius: 15px;
     text-align: center;
@@ -610,9 +610,36 @@
     font-family: Optima;
 }
 
+.dayTodayDiv {
+    width: 40px
+    height  : 40px;
+    border : 1px solid green;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-family: Optima;
+    color : blue;
+}
+
+.daySelectedDiv {
+    width: 40px
+    height  : 40px;
+    border : 1px solid green;
+    border-radius: 15px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-family: Optima;
+    color : white;
+    background-color: green;
+}
+
 .inActiveDayDiv {
-    width: 50px
-    height  : 50px;
+    width: 40px
+    height  : 40px;
     border : 1px solid gray;
     background-color: white;
     color : gray;

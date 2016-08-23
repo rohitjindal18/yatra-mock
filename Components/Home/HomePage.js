@@ -258,12 +258,6 @@ export default class HomePage extends React.Component {
    	 	var month = new Date(day).getMonth()+1;
     	var year = new Date(day).getFullYear();
 
-    	// if(day > this.state.selectedDay2 & this.state.arrivalDate.indexOf("Arrival") == -1){
-    	// 	this.setState({
-    	// 		selectedDay2 : day,
-    	// 		arrivalDate : year+"-"+month+"-"+date
-    	// 	});
-    	// }
 	    this.setState({ selectedDay: day,
 	    	departDate : year+"-"+month+"-"+date,
 	      	isEnabled : 'none',
@@ -294,7 +288,7 @@ export default class HomePage extends React.Component {
 		);
 
 		var arrivaldatePick = (
-		    <ArrivalDatePicker handleArrivalDate={this.arrivalDateSelected.bind(this)} isEnabled={this.state.isEnabled2}/>
+		    <ArrivalDatePicker departDateNew={this.state.departDate} handleArrivalDate={this.arrivalDateSelected.bind(this)} isEnabled={this.state.isEnabled2}/>
 		);
 
 		var departureDate = (

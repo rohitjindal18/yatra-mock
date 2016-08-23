@@ -4,7 +4,8 @@ class Rows extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			monthArray : []
+			monthArray : [],
+			selectedDate : ""
 		}
 	}
 	componentWillReceiveProps() {
@@ -14,39 +15,109 @@ class Rows extends React.Component {
 		while(i < this.props.totalDays){
 			var myArray = [];
 			for(var j = 0 ; j<7;j++){
-				var currentObj = {isActive : true , Value : ""};
+				var currentObj = {isActive : true , Value : "" , isToday : false , isSelected : false};
 				if(rowCount == 1)
 				{
 					if( j >= this.props.startDay)
 					{
-						myArray.push(i+1);
+						currentObj.Value = i+1;
+					
 						i++;
 					}
 					else 
 					{
-						myArray.push(0);
+						currentObj.Value = 0;
+						
 					}
 				}
 				else {
 					if((i) >= this.props.totalDays){
-						myArray.push(0);
+						currentObj.Value = 0;
+					 
 					}
 					else {
-						myArray.push(i+1);
+						currentObj.Value = i+1;
+					 
 					}
 					i++;
 				}
+				myArray.push(currentObj);
 			}
 			rowCount++;
 			completeArray.push(myArray);
 		}
 
+		if(this.props.currentMonth == new Date().getMonth() & this.props.currentYear <= new Date().getFullYear()){
+				var i = 1; 
+				var rowCount = 0;
+				for(var i = 0 ; i< completeArray.length ; i++){
+					for(j = 0 ; j< 7;j++){
+						if(completeArray[i][j].Value === new Date().getDate()){
+							completeArray[i][j].isToday = true;
+						}
+						else if(completeArray[i][j].Value < new Date().getDate()) {
+							completeArray[i][j].isActive = false;
+						}
+					}
+				}
+		}
+		if(this.props.departDateNew != "Departure"){
+			var departYear = this.props.departDateNew.split('-')[0];
+			var departMonth = this.props.departDateNew.split('-')[1];
+			var departDate = this.props.departDateNew.split('-')[2];
+
+			if(this.props.currentYear < departYear) {
+				for(var i = 0 ; i< completeArray.length ; i++){
+					for(j = 0 ; j< 7;j++){
+							completeArray[i][j].isActive = false;
+						}
+					}
+			}
+
+			else {
+				if(this.props.currentMonth <  departMonth-1 & this.props.currentYear < departYear){
+				for(var i = 0 ; i< completeArray.length ; i++){
+					for(j = 0 ; j< 7;j++){
+							completeArray[i][j].isActive = false;
+						}
+					}
+				}
+				if(this.props.currentMonth == departMonth-1){
+					for(var i = 0 ; i< completeArray.length ; i++){
+					for(j = 0 ; j< 7;j++){
+							if(completeArray[i][j].Value < departDate){
+								completeArray[i][j].isActive = false;
+							}
+						}
+					}
+				}	
+			}
+		}
+
+
+		if(this.state.selectedDate.length > 0){
+			var departYear = this.state.selectedDate.split('-')[0];
+			var departMonth = this.state.selectedDate.split('-')[1];
+			var departDate = this.state.selectedDate.split('-')[2];
+
+			if(this.props.currentYear == departYear && this.props.currentMonth == departMonth-1){
+				for(var i = 0 ; i< completeArray.length ; i++){
+					for(j = 0 ; j< 7;j++){
+							if(completeArray[i][j].Value == departDate){
+								completeArray[i][j].isSelected = true;
+							}
+						}
+					}
+				}
+			}
 		this.setState({
 			monthArray : completeArray
 		});
 	}
 	hanldleClickDate(event) {
-		console.log(event.target.id);
+		this.setState({
+			selectedDate : event.target.id
+		});
 		this.props.handleSelectDate(event.target.id);
 	}
 	render() {
@@ -57,15 +128,15 @@ class Rows extends React.Component {
 					<tr key={index} className="trWeek">
 						{
 							elem.map((value , index) => {
-								var ide = component.props.currentYear + "-"+(component.props.currentMonth+1)+"-"+value;
-								if(value == 0){
+								var ide = component.props.currentYear + "-"+(component.props.currentMonth+1)+"-"+value.Value;
+								if(value.Value == 0){
 									return(
 										<td key={index} className="noBorder"></td>
 									);
 								}
 								else {
 									return(
-										<td key={index} className="dayDiv" id={ide} onClick={true?component.hanldleClickDate.bind(this):null}>{value}</td>
+										<td key={index} className={value.isActive?value.isToday?"dayTodayDiv":value.isSelected?"daySelectedDiv":"dayDiv":"inActiveDayDiv"} id={ide} onClick={value.isActive?component.hanldleClickDate.bind(this):null}>{value.Value}</td>
 									);
 								}
 							})
@@ -189,7 +260,7 @@ export default class ArrivalDatePicker extends React.Component {
 		);
 
 		var dayRows = (		
-				<Rows handleSelectDate={this.handleArrivalDateClick.bind(this)} totalDays={this.state.noOfDays} startDay={this.state.indexOfDay} currentYear={this.state.currentYear} currentMonth={this.state.currentMonth}/>
+				<Rows handleSelectDate={this.handleArrivalDateClick.bind(this)} totalDays={this.state.noOfDays} startDay={this.state.indexOfDay} currentYear={this.state.currentYear} currentMonth={this.state.currentMonth} {...this.props}/>
 		);
 		return(
 			<div id="ArrivaldatePicker" style = {{'display':this.props.isEnabled}}>

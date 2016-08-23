@@ -4,7 +4,8 @@ class Rows extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			monthArray : []
+			monthArray : [],
+			selectedDate : ""
 		}
 	}
 	componentWillReceiveProps() {
@@ -47,28 +48,44 @@ class Rows extends React.Component {
 		}
 
 		if(this.props.currentMonth == new Date().getMonth() & this.props.currentYear <= new Date().getFullYear()){
-				var i = 0; 
+				var i = 1; 
 				var rowCount = 0;
-				while(i <= new Date().getDate()){
-					for(var j = 0 ; j < 7 ; j++){
-						if(i <= new Date().getDate()){
-							completeArray[rowCount][j].isActive = false;	
+				for(var i = 0 ; i< completeArray.length ; i++){
+					for(j = 0 ; j< 7;j++){
+						if(completeArray[i][j].Value === new Date().getDate()){
+							completeArray[i][j].isToday = true;
 						}
-						else {
-							break;
+						else if(completeArray[i][j].Value < new Date().getDate()) {
+							completeArray[i][j].isActive = false;
 						}
-						i++;
 					}
-					rowCount++;
 				}
 		}
+
+		if(this.state.selectedDate.length > 0){
+			var departYear = this.state.selectedDate.split('-')[0];
+			var departMonth = this.state.selectedDate.split('-')[1];
+			var departDate = this.state.selectedDate.split('-')[2];
+
+			if(this.props.currentYear == departYear && this.props.currentMonth == departMonth-1){
+				for(var i = 0 ; i< completeArray.length ; i++){
+					for(j = 0 ; j< 7;j++){
+							if(completeArray[i][j].Value == departDate){
+								completeArray[i][j].isSelected = true;
+							}
+						}
+					}
+				}
+			}
 
 		this.setState({
 			monthArray : completeArray
 		});
 	}
 	hanldleClickDate(event) {
-		console.log(event.target.id);
+		this.setState({
+			selectedDate : event.target.id
+		});
 		this.props.handleSelectDate(event.target.id);
 	}
 	render() {
@@ -87,7 +104,7 @@ class Rows extends React.Component {
 								}
 								else {
 									return(
-										<td key={index} className={value.isActive?"dayDiv":"inActiveDayDiv"} id={ide} onClick={value.isActive?component.hanldleClickDate.bind(this):null}>{value.Value}</td>
+										<td key={index} className={value.isActive?value.isToday?"dayTodayDiv":value.isSelected?"daySelectedDiv":"dayDiv":"inActiveDayDiv"} id={ide} onClick={value.isActive?component.hanldleClickDate.bind(this):null}>{value.Value}</td>
 									);
 								}
 							})
