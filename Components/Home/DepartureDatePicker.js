@@ -14,31 +14,53 @@ class Rows extends React.Component {
 		while(i < this.props.totalDays){
 			var myArray = [];
 			for(var j = 0 ; j<7;j++){
-				var currentObj = {isActive : true , Value : ""};
+				var currentObj = {isActive : true , Value : "" , isToday : false , isSelected : false};
 				if(rowCount == 1)
 				{
 					if( j >= this.props.startDay)
 					{
-						myArray.push(i+1);
+						currentObj.Value = i+1;
+						//myArray.push(i+1);
 						i++;
 					}
 					else 
 					{
-						myArray.push(0);
+						currentObj.Value = 0;
+						//myArray.push(0);
 					}
 				}
 				else {
 					if((i) >= this.props.totalDays){
-						myArray.push(0);
+						currentObj.Value = 0;
+						//myArray.push(0);
 					}
 					else {
-						myArray.push(i+1);
+						currentObj.Value = i+1;
+						//myArray.push(i+1);
 					}
 					i++;
 				}
+				myArray.push(currentObj);
 			}
 			rowCount++;
 			completeArray.push(myArray);
+		}
+
+		if(this.props.currentMonth == new Date().getMonth() & this.props.currentYear <= new Date().getFullYear()){
+				var i = 0; 
+				var rowCount = 0;
+				while(i <= new Date().getDate()){
+					for(var j = 0 ; j < 7 ; j++){
+						if(i <= new Date().getDate()){
+							completeArray[rowCount][j].isActive = false;	
+						}
+						else {
+							break;
+						}
+						i++;
+					}
+					rowCount++;
+				}
 		}
 
 		this.setState({
@@ -57,15 +79,15 @@ class Rows extends React.Component {
 					<tr key={index} className="trWeek">
 						{
 							elem.map((value , index) => {
-								var ide = component.props.currentYear + "-"+(component.props.currentMonth+1)+"-"+value;
-								if(value == 0){
+								var ide = component.props.currentYear + "-"+(component.props.currentMonth+1)+"-"+value.Value;
+								if(value.Value == 0){
 									return(
 										<td key={index} className="noBorder"></td>
 									);
 								}
 								else {
 									return(
-										<td key={index} className="dayDiv" id={ide} onClick={true?component.hanldleClickDate.bind(this):null}>{value}</td>
+										<td key={index} className={value.isActive?"dayDiv":"inActiveDayDiv"} id={ide} onClick={value.isActive?component.hanldleClickDate.bind(this):null}>{value.Value}</td>
 									);
 								}
 							})
