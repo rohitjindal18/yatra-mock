@@ -412,12 +412,85 @@
 
 .bannerAll {
     box-shadow: 1px 1px 10px #888888;
-    animation-name: example;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-    animation-direction: reverse;
     font-family: 'Roboto', sans-serif;
+    background-color: black;
+    color : white;
 }
+
+.bannerAllFirst {
+    box-shadow: 1px 1px 10px #888888;
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+    color : white;
+}
+.bannerAllFirst:after {
+    content: "\f080";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: white;
+    font-size: 27px;
+    padding-right: 0.5em;
+    position: relative;
+    left: 130;
+    top : -100;
+}
+
+
+.headerTab {
+    text-align: left;
+    font-size: 18px;
+    padding-left: 10px;
+}
+
+.headerSubTab {
+    margin-top : -35px;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.headerTabNew {
+    text-align: left;
+    font-size: 18px;
+    padding-left: 10px;
+    margin-top: -8px;
+}
+.headerSubTabNew {
+    margin-top : -42px;
+    padding-left: 10px;
+    text-align: left;
+}
+.headerSubSubTabNew {
+    margin-top : -37px;
+    padding-left: 10px;
+    text-align: left;
+    color: orange;
+}
+
+.orangebar {
+    background-color: orange;
+    color: orange;
+    height: 2px;
+    border : none;
+    margin-top : -15px;
+}
+.headerSubSubTabNewBlue {
+    margin-top : -37px;
+    padding-left: 10px;
+    text-align: left;
+    color: #4A90E2;
+}
+
+.bluebar {
+    background-color: #4A90E2;
+    color: #4A90E2;
+    height: 2px;
+    border : none;
+    margin-top : -15px;
+}
+
 
 @keyframes example {
     from {
@@ -601,24 +674,24 @@
 .dayDiv {
     width: 30px
     height  : 30px;
-    border : 1px solid #00B5D3;
+   
     border-radius: 15px;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 16px;
     font-family: Optima;
 }
 
 .dayTodayDiv {
     width: 40px
     height  : 40px;
-    border : 1px solid #00B5D3;
+
     border-radius: 15px;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 16px;
     font-family: Optima;
     color : blue;
 }
@@ -626,12 +699,11 @@
 .daySelectedDiv {
     width: 40px
     height  : 40px;
-    border : 1px solid #00B5D3;
-    border-radius: 15px;
+  
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 16px;
     font-family: Optima;
     color : white;
     background-color: #00B5D3;
@@ -641,14 +713,13 @@
 .inActiveDayDiv {
     width: 40px
     height  : 40px;
-    border : 1px solid gray;
     background-color: white;
     color : gray;
     border-radius: 15px;
     text-align: center;
     margin-left: 10px;
     margin-right: 10px;
-    font-size: 20px;
+    font-size: 16px;
     font-family: Optima;
 }
 .weekLiDiv{

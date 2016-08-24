@@ -337,17 +337,27 @@ export default class HomePage extends React.Component {
 						</div>
 					</div>
 						<div style = {styles.bottomBanners}>
-							<div className="bannerAll" key={0} style ={styles.bannerFirst}>
-								CONVENIENT	
+							<div className="bannerAllFirst" key={0} style ={styles.bannerFirst}>
+								<div className="headerTab"><span>Lowest Fare Finder</span></div>
+								<div className="headerSubTab"><span>Find the cheapeast fare for flights</span></div>
 							</div>
 							<div className="bannerAll" key={1} style ={styles.bannerRest}>
-								POCKET FRIENDLY	
+								<div className="headerTabNew"><span>Fares Starting 858</span></div>
+								<div className="headerSubTabNew"><span>On Indigo , Spicejet & Jet Airways</span></div>
+								<div className="headerSubSubTabNew"><span>Domestic Flights</span></div>
+								<hr className="orangebar"/>
 							</div>
 							<div className="bannerAll" key={2} style ={styles.bannerRest}>
-								AWESOME	
+								<div className="headerTabNew"><span>Flat 55% off + use 10% ecash</span></div>
+								<div className="headerSubTabNew"><span>Use code HAPPY50</span></div>
+								<div className="headerSubSubTabNewBlue"><span>Domestic Hotels</span></div>
+								<hr className="bluebar"/>
 							</div>
 							<div className="bannerAll" key={3} style ={styles.bannerRest}>
-								24 X 7
+								<div className="headerTabNew"><span>Get up to 500 cashback</span></div>
+								<div className="headerSubTabNew"><span>Through Paytm Wallet</span></div>
+								<div className="headerSubSubTabNew"><span>Flights , Hotels & Bus</span></div>
+								<hr className="orangebar"/>
 							</div>
 
 						</div>
@@ -398,7 +408,7 @@ var styles = {
 	} ,
 	homeBannerTable : {
 		borderCollapse: 'collapse',
-		borderRadius : 8,
+		
 		opacity : 1
 	},
 	homeBannerTdBig : {
@@ -406,7 +416,7 @@ var styles = {
 		height : 44 ,
 		backgroundColor : 'white',
 		border : '1px solid #282929',
-		borderRadius : 8,
+		
 		overflow : 'hidden',
 	} ,
 
@@ -415,7 +425,7 @@ var styles = {
 		height : 44 ,
 		backgroundColor : 'white',
 		border : '1px solid #282929',
-		borderRadius : 8,
+	
 		overflow : 'hidden',
 	},
 	homeBannerTdSmall : {
@@ -467,21 +477,19 @@ var styles = {
 		display : 'inline-flex'
 	},
 	bannerFirst : {
-		marginLeft : 250,
-		width : 190 ,
-		height : 60 ,
+		marginLeft : 70,
+		width : 300 ,
+		height : 110 ,
 		lineHeight: 4,
 		textAlign : 'center',
-		fontSize : 15,
-		borderRadius : 15
+		fontSize : 15
 	},
 	bannerRest : {
-		marginLeft : 50,
-		width : 190 ,
-		height : 60 ,
+		marginLeft : 30,
+		width : 300 ,
+		height : 110 ,
 		lineHeight: 4,
 		textAlign : 'center',
-		fontSize : 15,
-		borderRadius : 15
+		fontSize : 15
 	}
 };

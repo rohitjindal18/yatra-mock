@@ -75,7 +75,8 @@ class Rows extends React.Component {
 			}
 
 			else {
-				if(this.props.currentMonth <  departMonth-1 & this.props.currentYear < departYear){
+				if(this.props.currentMonth <  departMonth-1 & this.props.currentYear <= departYear){
+					console.log("com");
 				for(var i = 0 ; i< completeArray.length ; i++){
 					for(j = 0 ; j< 7;j++){
 							completeArray[i][j].isActive = false;
