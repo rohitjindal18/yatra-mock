@@ -1,3 +1,8 @@
+
+* {
+    box-sizing: border-box;
+}
+
 #searchTd:after {
 	content: "\f002";
     font-family: FontAwesome;
@@ -425,9 +430,9 @@
 
 .rightArrow {
     position: absolute;
-    width: 40px;
+    width: 50px;
     height: 120px;
-    margin-left: 1400px;
+    margin-left: 98%;
     margin-top: 315px;
     background-color: white;
     z-index: 5;
@@ -460,7 +465,7 @@
 
 .leftArrow {
     position: absolute;
-    width: 40px;
+    width: 30px;
     height: 120px;
     margin-top: 315px;
     background-color: white;
@@ -479,7 +484,7 @@
     font-size: 32px;
     position: relative;
     top : 50;
-    left : 7;
+    left : 3;
 }
 
 
@@ -500,8 +505,8 @@
     font-size: 27px;
     padding-right: 0.5em;
     position: relative;
-    left: 130;
-    top : -100;
+    left: 120;
+    top : -95;
 }
 
 
@@ -517,11 +522,55 @@
     text-align: left;
 }
 
-.headerTabNew {
-    text-align: left;
-    font-size: 18px;
-    padding-left: 10px;
-    margin-top: -8px;
+@media only screen and (max-width: 1100px) {
+    .headerTab {
+        font-size: 14px;
+        margin-top : 15px;
+    }
+    .headerSubTab {
+        font-size : 12px;
+        margin-top : -25px;
+    }
+
+    .headerSubTabNew span {
+        font-size : 12px;
+    }
+
+    .headerSubTabNew {
+        margin-top: -10px;
+    }
+
+    .headerTabNew span {
+        font-size: 14px;
+    }
+
+    .headerTabNew {
+        margin-top: 10px;
+    }
+
+    .bannerAllFirst:after {
+    content: "\f080";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: white;
+    font-size: 27px;
+    padding-right: 0.5em;
+    position: relative;
+    left: 80;
+    top : -100;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .headerTabNew {
+        text-align: left;
+        font-size: 18px;
+        padding-left: 10px;
+        margin-top: -8px;
+    }
 }
 .headerSubTabNew {
     margin-top : -42px;

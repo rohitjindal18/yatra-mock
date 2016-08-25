@@ -319,9 +319,6 @@ export default class HomePage extends React.Component {
 						<div className="leftArrow" onClick={this.handleClickLeftArrow.bind(this)}>
 						</div>
 					<div style={styles.homePageBannerStyle}><img src="./Images/goldengate.jpg" style= {styles.homePageBannerImage}></img></div>
-					<div style={styles.homeheading}>
-						
-					</div>
 					<div style ={styles.bannerMiddleDiv}>
 						<div style = {styles.bannerMiddleSubDiv}>
 							<table style={styles.homeBannerTable}>
@@ -356,8 +353,8 @@ export default class HomePage extends React.Component {
 					</div>
 						<div style={styles.insideBanner}>
 						<div style = {styles.bottomBanners} className={this.state.isRightPressed?"rightTrans":"notTrans"}>
-							<div className="bannerAllFirst" key={0} style ={styles.bannerFirst}>
-								<div className="headerTab"><span>Lowest Fare Finder</span></div>
+								<div className="bannerAllFirst" key={0} style ={styles.bannerFirst}>
+									<div className="headerTab"><span>Lowest Fare Finder</span></div>
 									<div className="headerSubTab"><span>Find the cheapeast fare for flights</span></div>
 								</div>
 								<div className="bannerAll" key={1} style ={styles.bannerRest}>
@@ -424,24 +421,24 @@ var styles = {
 	},
 	bannerMiddleDiv : {
 		position : 'absolute',
-		marginLeft : 200 ,
-		marginTop : 100 ,
-		width : 1000 , 
+		marginLeft : '15%' ,
+		marginRight : '35%',
+		marginTop : '8%' ,
+		width : '70%' , 
 		height : 130,
 		backgroundColor : '#282929',
 		opacity : 0.9
 	},
 	bannerMiddleSubDiv : {
-		width : 950,
-		margin : 'auto',
+		width : '90%',
 		height : 44,
 		marginTop : 50,
+		marginLeft : '5%',
 		backgroundColor : 'white',
 		opacity : 1
 	} ,
 	homeBannerTable : {
 		borderCollapse: 'collapse',
-		
 		opacity : 1
 	},
 	homeBannerTdBig : {
@@ -514,16 +511,16 @@ var styles = {
 		width : '100%'
 	},
 	bannerFirst : {
-		marginLeft : 120,
-		width : 280 ,
+		marginLeft : '5%',
+		width : '25%' ,
 		height : 110 ,
 		lineHeight: 4,
 		textAlign : 'center',
 		fontSize : 15
 	},
 	bannerRest : {
-		marginLeft : 30,
-		width : 280 ,
+		marginLeft : '2%',
+		width : '25%' ,
 		height : 110 ,
 		lineHeight: 4,
 		textAlign : 'center',
