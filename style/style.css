@@ -415,7 +415,73 @@
     font-family: 'Roboto', sans-serif;
     background-color: black;
     color : white;
+
 }
+
+.priceValue {
+    font-size: 12px;
+    font-family: Optima;
+}
+
+.rightArrow {
+    position: absolute;
+    width: 40px;
+    height: 120px;
+    margin-left: 1400px;
+    margin-top: 315px;
+    background-color: white;
+    z-index: 5;
+    opacity: 1;
+}
+
+.rightTrans {
+    transition: transform 1s;
+    transform: translateX(-580px);
+}
+
+.notTrans {
+    transition: transform 1s;
+    transform: translateX(0px);
+}
+
+.rightArrow:after {
+    content: "\f054";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: gray;
+    font-size: 32px;
+    position: relative;
+    top : 50;
+    left : 7;
+}
+
+.leftArrow {
+    position: absolute;
+    width: 40px;
+    height: 120px;
+    margin-top: 315px;
+    background-color: white;
+    z-index: 5;
+    opacity: 1;
+}
+
+.leftArrow:after {
+    content: "\f053";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: gray;
+    font-size: 32px;
+    position: relative;
+    top : 50;
+    left : 7;
+}
+
 
 .bannerAllFirst {
     box-shadow: 1px 1px 10px #888888;
@@ -681,6 +747,7 @@
     margin-right: 10px;
     font-size: 16px;
     font-family: Optima;
+    cursor: default;
 }
 
 .dayTodayDiv {
@@ -694,6 +761,7 @@
     font-size: 16px;
     font-family: Optima;
     color : blue;
+    cursor: default;
 }
 
 .daySelectedDiv {
@@ -707,6 +775,7 @@
     font-family: Optima;
     color : white;
     background-color: #00B5D3;
+    cursor: default;
 }
 
 
@@ -721,6 +790,7 @@
     margin-right: 10px;
     font-size: 16px;
     font-family: Optima;
+    cursor: default;
 }
 .weekLiDiv{
     padding-left: 11px;

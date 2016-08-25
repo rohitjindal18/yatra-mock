@@ -117,7 +117,8 @@ export default class HomePage extends React.Component {
 			searchedCities : [],
 			searchedDepCities : [],
 			currentFocusIndex : -1,
-			currentFocusIndexD : -1
+			currentFocusIndexD : -1,
+			isRightPressed : false
 		};
 	}
 
@@ -281,6 +282,18 @@ export default class HomePage extends React.Component {
 		    });
 	}
 
+	handleClickRightArrow() {
+		this.setState({
+			isRightPressed : true
+		});
+	}
+
+	handleClickLeftArrow() {
+		this.setState({
+			isRightPressed : false
+		});
+	}
+
 	render() {
 		var component = this;
 		var departuredatePick = (
@@ -300,6 +313,11 @@ export default class HomePage extends React.Component {
 		);
 		return(
 				<div style={styles.homePageBannerStyle}>
+						<div className="rightArrow" onClick={this.handleClickRightArrow.bind(this)}>
+						</div>
+
+						<div className="leftArrow" onClick={this.handleClickLeftArrow.bind(this)}>
+						</div>
 					<div style={styles.homePageBannerStyle}><img src="./Images/goldengate.jpg" style= {styles.homePageBannerImage}></img></div>
 					<div style={styles.homeheading}>
 						
@@ -336,30 +354,44 @@ export default class HomePage extends React.Component {
 							</table>
 						</div>
 					</div>
-						<div style = {styles.bottomBanners}>
+						<div style={styles.insideBanner}>
+						<div style = {styles.bottomBanners} className={this.state.isRightPressed?"rightTrans":"notTrans"}>
 							<div className="bannerAllFirst" key={0} style ={styles.bannerFirst}>
 								<div className="headerTab"><span>Lowest Fare Finder</span></div>
-								<div className="headerSubTab"><span>Find the cheapeast fare for flights</span></div>
-							</div>
-							<div className="bannerAll" key={1} style ={styles.bannerRest}>
-								<div className="headerTabNew"><span>Fares Starting 858</span></div>
-								<div className="headerSubTabNew"><span>On Indigo , Spicejet & Jet Airways</span></div>
-								<div className="headerSubSubTabNew"><span>Domestic Flights</span></div>
-								<hr className="orangebar"/>
-							</div>
-							<div className="bannerAll" key={2} style ={styles.bannerRest}>
-								<div className="headerTabNew"><span>Flat 55% off + use 10% ecash</span></div>
-								<div className="headerSubTabNew"><span>Use code HAPPY50</span></div>
-								<div className="headerSubSubTabNewBlue"><span>Domestic Hotels</span></div>
-								<hr className="bluebar"/>
-							</div>
-							<div className="bannerAll" key={3} style ={styles.bannerRest}>
-								<div className="headerTabNew"><span>Get up to 500 cashback</span></div>
-								<div className="headerSubTabNew"><span>Through Paytm Wallet</span></div>
-								<div className="headerSubSubTabNew"><span>Flights , Hotels & Bus</span></div>
-								<hr className="orangebar"/>
-							</div>
+									<div className="headerSubTab"><span>Find the cheapeast fare for flights</span></div>
+								</div>
+								<div className="bannerAll" key={1} style ={styles.bannerRest}>
+									<div className="headerTabNew"><span>Fares Starting 858</span></div>
+									<div className="headerSubTabNew"><span>On Indigo , Spicejet & Jet Airways</span></div>
+									<div className="headerSubSubTabNew"><span>Domestic Flights</span></div>
+									<hr className="orangebar"/>
+								</div>
+								<div className="bannerAll" key={2} style ={styles.bannerRest}>
+									<div className="headerTabNew"><span>Flat 55% off + use 10% ecash</span></div>
+									<div className="headerSubTabNew"><span>Use code HAPPY50</span></div>
+									<div className="headerSubSubTabNewBlue"><span>Domestic Hotels</span></div>
+									<hr className="bluebar"/>
+								</div>
+								<div className="bannerAll" key={3} style ={styles.bannerRest}>
+									<div className="headerTabNew"><span>Get up to 500 cashback</span></div>
+									<div className="headerSubTabNew"><span>Through Paytm Wallet</span></div>
+									<div className="headerSubSubTabNew"><span>Flights , Hotels & Bus</span></div>
+									<hr className="orangebar"/>
+								</div>
+								<div className="bannerAll" key={4} style ={styles.bannerRest}>
+									<div className="headerTabNew"><span>Europe Pacakges</span></div>
+									<div className="headerSubTabNew"><span>starting @ 99,999/_</span></div>
+									<div className="headerSubSubTabNewBlue"><span>International Holidays</span></div>
+									<hr className="bluebar"/>
+								</div>
+								<div className="bannerAll" key={5} style ={styles.bannerRest}>
+									<div className="headerTabNew"><span>Special 30% cashback</span></div>
+									<div className="headerSubTabNew"><span>On International Flights</span></div>
+									<div className="headerSubSubTabNew"><span>International Flights</span></div>
+									<hr className="orangebar"/>
+								</div>
 
+							</div>
 						</div>
 						<div className="departCityDiv"  >
 							<SearchDepartCityComponent isFocussed={this.state.currentFocusIndexD} clickedDepartCity={this.clickDepart.bind(this)} searchedCity={this.state.searchedCities}/>
@@ -382,7 +414,8 @@ var styles = {
 			width : '100%',
 			top : 0,
 			left : 0,
-			position : 'absolute'
+			position : 'absolute',
+			overflow : 'hidden'
 	},
 	homePageBannerImage : {
 		width : '100%',
@@ -472,13 +505,17 @@ var styles = {
 	bottomBanners : {
 		position : 'absolute',
 		marginTop : 320,
-		width : '100%',
+		width : '140%',
 		height : 150 ,
-		display : 'inline-flex'
+		display : 'inline-flex',
+		overflow : 'hidden'
+	},
+	insideBanner : {
+		width : '100%'
 	},
 	bannerFirst : {
-		marginLeft : 70,
-		width : 300 ,
+		marginLeft : 120,
+		width : 280 ,
 		height : 110 ,
 		lineHeight: 4,
 		textAlign : 'center',
@@ -486,7 +523,7 @@ var styles = {
 	},
 	bannerRest : {
 		marginLeft : 30,
-		width : 300 ,
+		width : 280 ,
 		height : 110 ,
 		lineHeight: 4,
 		textAlign : 'center',

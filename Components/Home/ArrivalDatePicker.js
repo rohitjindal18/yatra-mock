@@ -1,6 +1,7 @@
 import React from 'react';
 
 class Rows extends React.Component {
+	static ArrivalPrice = ["4,212","4,222","4,232","4,252","4,216","4,212","4,211","4,214","4,522","4,672","4,000","6,212","7,212","4,212","4,112","4,219","4,218","4,212","4,672","4,212","4,672","4,345","4,212","4,222","4,212","7,552","4,672","5,212","4,878","4,612","4,412"];
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -76,7 +77,7 @@ class Rows extends React.Component {
 
 			else {
 				if(this.props.currentMonth <  departMonth-1 & this.props.currentYear <= departYear){
-					console.log("com");
+
 				for(var i = 0 ; i< completeArray.length ; i++){
 					for(j = 0 ; j< 7;j++){
 							completeArray[i][j].isActive = false;
@@ -115,11 +116,11 @@ class Rows extends React.Component {
 			monthArray : completeArray
 		});
 	}
-	hanldleClickDate(event) {
+	hanldleClickDate(value) {
 		this.setState({
-			selectedDate : event.target.id
+			selectedDate : value
 		});
-		this.props.handleSelectDate(event.target.id);
+		this.props.handleSelectDate(value);
 	}
 	render() {
 		var component = this;
@@ -136,9 +137,21 @@ class Rows extends React.Component {
 									);
 								}
 								else {
-									return(
-										<td key={index} className={value.isActive?value.isToday?"dayTodayDiv":value.isSelected?"daySelectedDiv":"dayDiv":"inActiveDayDiv"} id={ide} onClick={value.isActive?component.hanldleClickDate.bind(this):null}>{value.Value}</td>
-									);
+									if(value.isActive){
+										return(
+											<td key={index} className={value.isActive?value.isToday?"dayTodayDiv":value.isSelected?"daySelectedDiv":"dayDiv":"inActiveDayDiv"} id={ide} onClick={value.isActive?component.hanldleClickDate.bind(this ,ide):null}>
+												<div>{value.Value}</div>
+												<div className="priceValue">{Rows.ArrivalPrice[index]}</div>
+											</td>
+										);
+									}
+									else {
+										return(
+											<td key={index} className={value.isActive?value.isToday?"dayTodayDiv":value.isSelected?"daySelectedDiv":"dayDiv":"inActiveDayDiv"} id={ide} onClick={value.isActive?component.hanldleClickDate.bind(this ,ide):null}>
+												<div>{value.Value}</div>
+											</td>
+										);
+									}
 								}
 							})
 						}
@@ -195,7 +208,7 @@ export default class ArrivalDatePicker extends React.Component {
 			monthsName : myArray,
 			currentMonth : new Date().getMonth(),
 			currentYear : new Date().getFullYear(),
-			indexOfDay : new Date(new Date().getFullYear() , new Date().getMonth() , new Date().getDay()).getDay(),
+			indexOfDay : new Date(new Date().getFullYear() , new Date().getMonth() , 1).getDay(),
 			noOfDays : new Date(new Date().getFullYear() , (new Date().getMonth()) , 0).getDate()
 		});
 	}
